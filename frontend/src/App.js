@@ -962,8 +962,6 @@ const App = () => {
                 <span className="text-slate-300 font-mono">
                   {time.toLocaleTimeString()}
                 </span>
-                <span className="text-slate-400">|</span>
-                <span className="text-green-400 text-xs">{t('secure')}</span>
               </div>
               <button
                 onClick={toggleLanguage}
