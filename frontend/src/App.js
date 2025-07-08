@@ -351,6 +351,80 @@ const App = () => {
                 </p>
               </div>
             </div>
+          ) : (
+            <div className="space-y-6 text-slate-300">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-3">Politique de Confidentialité</h3>
+                <p className="text-sm text-slate-400 mb-4">Date d'entrée en vigueur : 1er janvier 2025</p>
+                <p className="mb-4">
+                  NetSyon Consultation TI (« NetSyon », « nous », « notre ») s'engage à protéger votre vie privée. 
+                  Cette Politique de Confidentialité explique comment nous collectons, utilisons, divulguons et protégeons 
+                  vos informations lorsque vous visitez notre site web ou utilisez nos services.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">1. Informations que Nous Collectons</h4>
+                <div className="space-y-2 text-sm">
+                  <p><strong>Informations Personnelles :</strong> Nom, adresse courriel, numéro de téléphone, détails de l'entreprise et exigences du projet.</p>
+                  <p><strong>Informations Techniques :</strong> Adresse IP, type de navigateur, informations sur l'appareil et analyses d'utilisation du site web.</p>
+                  <p><strong>Informations Professionnelles :</strong> Détails de l'infrastructure TI, exigences de sécurité et besoins d'affaires (uniquement avec consentement explicite).</p>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">2. Comment Nous Utilisons Vos Informations</h4>
+                <ul className="space-y-1 text-sm list-disc list-inside">
+                  <li>Fournir des services de consultation TI et de cybersécurité</li>
+                  <li>Communiquer concernant les projets et le support</li>
+                  <li>Améliorer nos services et fonctionnalités du site web</li>
+                  <li>Respecter les obligations légales</li>
+                  <li>Envoyer des mises à jour pertinentes de l'industrie (avec consentement)</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">3. Partage d'Informations</h4>
+                <p className="text-sm">
+                  Nous ne vendons, n'échangeons ou ne louons pas vos informations personnelles. Nous pouvons partager des informations uniquement avec :
+                </p>
+                <ul className="space-y-1 text-sm list-disc list-inside mt-2">
+                  <li>Fournisseurs de services de confiance liés par des accords de confidentialité</li>
+                  <li>Autorités légales lorsque requis par la loi</li>
+                  <li>Partenaires Microsoft pour l'implémentation de services cloud (avec consentement)</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">4. Sécurité des Données</h4>
+                <p className="text-sm">
+                  Nous implémentons des mesures de sécurité standards de l'industrie incluant le chiffrement, protocoles de transmission sécurisés, 
+                  et audits de sécurité réguliers pour protéger vos informations. Notre équipe suit les meilleures pratiques de sécurité Microsoft 
+                  et maintient des certifications de cybersécurité pertinentes.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">5. Vos Droits (Loi sur la Protection des Renseignements Personnels du Québec)</h4>
+                <ul className="space-y-1 text-sm list-disc list-inside">
+                  <li>Droit d'accéder à vos informations personnelles</li>
+                  <li>Droit de corriger des informations inexactes</li>
+                  <li>Droit de demander la suppression de vos données</li>
+                  <li>Droit de retirer votre consentement</li>
+                  <li>Droit de déposer une plainte auprès du commissaire à la vie privée du Québec</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">6. Informations de Contact</h4>
+                <p className="text-sm">
+                  Pour des questions liées à la vie privée ou pour exercer vos droits, contactez-nous à :
+                  <br />Courriel : privacy@netsyon.com
+                  <br />Téléphone : +1 (555) 123-4567
+                  <br />Adresse : Québec, Canada
+                </p>
+              </div>
+            </div>
           )
         };
 
