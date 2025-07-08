@@ -806,7 +806,7 @@ const App = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 ),
                 title: 'Proven Expertise',
-                description: 'Microsoft certified professionals with extensive experience in enterprise security solutions',
+                description: 'Years of experience across all technology platforms',
                 color: 'blue'
               },
               {
