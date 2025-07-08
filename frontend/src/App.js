@@ -990,17 +990,17 @@ const App = () => {
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {[
-                  { value: '12+', label: 'Years Experience', color: 'blue' },
-                  { value: '500+', label: 'Projects Completed', color: 'cyan' },
-                  { value: '24/7', label: 'Support Available', color: 'green' },
-                  { value: '100%', label: 'Client Satisfaction', color: 'orange' }
+                  { value: '12+', labelKey: 'yearsExperience', color: 'blue' },
+                  { value: '500+', labelKey: 'projectsCompleted', color: 'cyan' },
+                  { value: '24/7', labelKey: 'supportAvailable', color: 'green' },
+                  { value: '100%', labelKey: 'clientSatisfaction', color: 'orange' }
                 ].map((stat, index) => (
                   <div key={index} className="group smart-stat-card">
                     <div className="relative z-10 p-6 text-center">
                       <div className={`text-3xl font-bold text-${stat.color}-400 mb-2 group-hover:scale-110 transition-transform duration-300`}>
                         {stat.value}
                       </div>
-                      <div className="text-slate-300 text-sm">{stat.label}</div>
+                      <div className="text-slate-300 text-sm">{t(stat.labelKey)}</div>
                     </div>
                   </div>
                 ))}
