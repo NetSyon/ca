@@ -349,16 +349,16 @@ const App = () => {
             <div className="space-y-8">
               <div className="smart-container">
                 <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                  About <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">NetSys</span>
+                  About <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">NetSyon</span>
                 </h2>
                 <p className="text-xl text-slate-300 leading-relaxed mb-6">
-                  With over a decade of experience in IT consulting and cybersecurity, NetSys delivers 
-                  comprehensive technology solutions that protect, optimize, and scale your digital infrastructure.
+                  NetSyon is a consulting office specializing in Microsoft Cloud security, data protection, and IT solutions for businesses, SMBs, and advanced home users. With over a decade of experience in IT consulting, NetSyon has been the trusted technology partner for individuals, small businesses, and large enterprises across the region.
+                </p>
+                <p className="text-lg text-slate-300 leading-relaxed mb-6">
+                  In an increasingly digital world, securing data and cloud infrastructure is critical—not only for enterprises, but also for individuals managing connected homes. NetSyon helps clients build secure, reliable, and scalable digital environments by combining strategic expertise with hands-on implementation.
                 </p>
                 <p className="text-lg text-slate-300 leading-relaxed">
-                  We understand that every client has unique needs. Whether you're a family looking to secure 
-                  your home network, a growing business requiring reliable IT support, or an enterprise needing 
-                  advanced cybersecurity solutions, we tailor our approach to deliver maximum value.
+                  We provide tailored consulting services across the Microsoft ecosystem, helping organizations and individuals take full control of their cybersecurity posture, cloud governance, and IT infrastructure.
                 </p>
               </div>
               
