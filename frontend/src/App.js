@@ -1418,7 +1418,9 @@ const App = () => {
                         </svg>
                       </div>
                       <p className="text-slate-300 font-medium mb-1">{t('phone')}</p>
-                      <p className="text-cyan-400 text-sm">+1 (555) 123-4567</p>
+                      <a href="http://wa.me/15144004279" target="_blank" rel="noopener noreferrer" className="text-cyan-400 text-sm hover:text-cyan-300 transition-colors duration-300">
+                        +1 (555) 123-4567
+                      </a>
                     </div>
                     <div className="text-center group">
                       <div className="w-12 h-12 bg-green-400/10 border border-green-400/30 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
