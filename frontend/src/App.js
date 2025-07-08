@@ -53,6 +53,225 @@ const App = () => {
     setModalContent('');
   };
 
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'fr' : 'en');
+  };
+
+  const t = (key) => {
+    const translations = {
+      en: {
+        // Navigation
+        home: 'Home',
+        services: 'Services',
+        about: 'About',
+        contact: 'Contact',
+        secure: 'SECURE',
+        
+        // Hero Section
+        heroTitle1: 'Expert IT Solutions',
+        heroTitle2: 'For Every Need',
+        heroDescription: 'From home networks to enterprise infrastructure, NetSyon delivers comprehensive IT consulting and cybersecurity solutions tailored to your unique requirements.',
+        viewServices: 'View Our Services',
+        learnMore: 'Learn More',
+        scrollExplore: 'Scroll to explore',
+        systemOnline: 'System Online',
+        securityActive: 'Security Active',
+        servicesReady: 'Services Ready',
+        
+        // Services Section
+        servicesTitle: 'Our Services',
+        servicesDescription: 'Comprehensive IT solutions designed for home users and enterprise organizations',
+        homeUsers: 'Home Users',
+        homeUsersStatus: 'Residential Solutions',
+        homeUsersDescription: 'Comprehensive technology support and cybersecurity solutions for families and individuals.',
+        enterprise: 'Enterprise',
+        enterpriseStatus: 'Corporate Solutions',
+        enterpriseDescription: 'Advanced cybersecurity and scalable infrastructure solutions for large organizations.',
+        
+        // Home User Services
+        homeNetworkSecurity: 'Home Network Security',
+        homeNetworkSecurityDesc: 'Wi-Fi setup, firewall hardening, parental controls & guest isolation',
+        deviceProtection: 'Device Protection',
+        deviceProtectionDesc: 'Antivirus, IoT monitoring & secure setup of smart devices (TVs, cams, etc.)',
+        cyberAwareness: 'Cyber Awareness',
+        cyberAwarenessDesc: 'Family-focused training on phishing, passwords & online safety',
+        dataPrivacyBackup: 'Data Privacy & Backup',
+        dataPrivacyBackupDesc: 'Cloud backup config, encryption, GDPR-friendly storage (NAS)',
+        userAccessControl: 'User Access Control',
+        userAccessControlDesc: 'MFA setup, account recovery & password management',
+        remoteAccessVPN: 'Remote Access & VPN',
+        remoteAccessVPNDesc: 'Secure browsing & remote desktop setup for travel/work',
+        techOptimization: 'Tech Optimization',
+        techOptimizationDesc: 'Smart home troubleshooting, network tuning, and device upgrades',
+        
+        // Enterprise Services
+        purviewImplementation: 'Purview Implementation',
+        purviewImplementationDesc: 'Organization-wide deployment of Microsoft 365 and Endpoint-based Data Loss Prevention (DLP) policies to safeguard sensitive information.',
+        conditionalAccess: 'Conditional Access (CAP) Rollout',
+        conditionalAccessDesc: 'Design and implementation of Conditional Access Policies to enforce secure, identity-based access across all environments.',
+        defenderOffice: 'Microsoft Defender for Office (MDO) Deployment',
+        defenderOfficeDesc: 'Enterprise-wide implementation of MDO to enhance email threat protection and strengthen overall security posture.',
+        informationProtection: 'Information Protection (MIP)',
+        informationProtectionDesc: 'Deployment of Microsoft Information Protection for data classification, labeling, and encryption across the organization.',
+        emailEncryption: 'Email Encryption',
+        emailEncryptionDesc: 'Design and deployment of a customized email encryption solution, ensuring secure internal and external communications.',
+        identityManagement: 'Identity and Access Management (IAM)',
+        identityManagementDesc: 'Architecture and rollout of PIM, Azure RBAC, Azure AD permissions, Exchange role configurations, and RBAC compliance.',
+        multiFactor: 'Multi-Factor Authentication (MFA)',
+        multiFactorDesc: 'End-to-end deployment using software and hardware tokens (FIDO2) to strengthen identity verification.',
+        defenderCloud: 'Microsoft Defender for Cloud Apps (MDCA)',
+        defenderCloudDesc: 'Deployment of MDCA policies to monitor and secure cloud app usage, enforce file protection, and manage user sessions.',
+        
+        // About Section
+        aboutTitle: 'About NetSyon',
+        aboutParagraph1: 'NetSyon is a consulting office specializing in Microsoft Cloud security, data protection, and IT solutions for businesses, SMBs, and advanced home users. With over a decade of experience in IT consulting, NetSyon has been the trusted technology partner for individuals, small businesses, and large enterprises across the region.',
+        aboutParagraph2: 'In an increasingly digital world, securing data and cloud infrastructure is critical—not only for enterprises, but also for individuals managing connected homes. NetSyon helps clients build secure, reliable, and scalable digital environments by combining strategic expertise with hands-on implementation.',
+        aboutParagraph3: 'We provide tailored consulting services across the Microsoft ecosystem, helping organizations and individuals take full control of their cybersecurity posture, cloud governance, and IT infrastructure.',
+        yearsExperience: 'Years Experience',
+        projectsCompleted: 'Projects Completed',
+        supportAvailable: 'Support Available',
+        clientSatisfaction: 'Client Satisfaction',
+        
+        // Why Choose Section
+        whyChooseTitle: 'Why Choose NetSyon?',
+        whyChooseDescription: 'We combine deep technical expertise with personalized service to deliver solutions that work',
+        provenExpertise: 'Proven Expertise',
+        provenExpertiseDesc: 'Years of experience across all technology platforms',
+        personalizedService: 'Personalized Service',
+        personalizedServiceDesc: 'Tailored solutions that fit your specific needs, budget, and timeline',
+        rapidResponse: 'Rapid Response',
+        rapidResponseDesc: 'Quick turnaround times with 24/7 support for critical issues',
+        
+        // Contact Section
+        contactTitle: 'Get In Touch',
+        contactDescription: 'Ready to secure and optimize your IT infrastructure? Connect with our expert team.',
+        contactInformation: 'Contact Information',
+        email: 'Email',
+        phone: 'Phone',
+        support: 'Support',
+        emergency: '24/7 Emergency',
+        businessHours: 'Business Hours',
+        mondayFriday: 'Monday - Friday',
+        saturday: 'Saturday',
+        sunday: 'Sunday',
+        emergencyOnly: 'Emergency Only',
+        
+        // Footer
+        footerDescription: 'Professional IT consulting and cybersecurity solutions for every need',
+        privacyPolicy: 'Privacy Policy',
+        termsOfService: 'Terms of Service',
+        footerSupport: 'Support',
+        copyright: '© 2025 NetSyon IT Consulting. All rights reserved.',
+      },
+      fr: {
+        // Navigation
+        home: 'Accueil',
+        services: 'Services',
+        about: 'À propos',
+        contact: 'Contact',
+        secure: 'SÉCURISÉ',
+        
+        // Hero Section
+        heroTitle1: 'Solutions TI Expertes',
+        heroTitle2: 'Pour Tous Besoins',
+        heroDescription: 'Des réseaux domestiques aux infrastructures d\'entreprise, NetSyon offre des services complets de consultation TI et de cybersécurité adaptés à vos exigences uniques.',
+        viewServices: 'Voir Nos Services',
+        learnMore: 'En Savoir Plus',
+        scrollExplore: 'Défiler pour explorer',
+        systemOnline: 'Système En Ligne',
+        securityActive: 'Sécurité Active',
+        servicesReady: 'Services Prêts',
+        
+        // Services Section
+        servicesTitle: 'Nos Services',
+        servicesDescription: 'Solutions TI complètes conçues pour les utilisateurs domestiques et les organisations d\'entreprise',
+        homeUsers: 'Utilisateurs Domestiques',
+        homeUsersStatus: 'Solutions Résidentielles',
+        homeUsersDescription: 'Support technologique complet et solutions de cybersécurité pour familles et particuliers.',
+        enterprise: 'Entreprise',
+        enterpriseStatus: 'Solutions Corporatives',
+        enterpriseDescription: 'Solutions avancées de cybersécurité et d\'infrastructure évolutive pour grandes organisations.',
+        
+        // Home User Services
+        homeNetworkSecurity: 'Sécurité Réseau Domestique',
+        homeNetworkSecurityDesc: 'Configuration Wi-Fi, durcissement pare-feu, contrôles parentaux et isolation invités',
+        deviceProtection: 'Protection des Appareils',
+        deviceProtectionDesc: 'Antivirus, surveillance IoT et configuration sécurisée d\'appareils intelligents (TV, caméras, etc.)',
+        cyberAwareness: 'Sensibilisation Cyber',
+        cyberAwarenessDesc: 'Formation familiale sur le phishing, mots de passe et sécurité en ligne',
+        dataPrivacyBackup: 'Confidentialité et Sauvegarde',
+        dataPrivacyBackupDesc: 'Configuration sauvegarde cloud, chiffrement, stockage conforme RGPD (NAS)',
+        userAccessControl: 'Contrôle d\'Accès Utilisateur',
+        userAccessControlDesc: 'Configuration MFA, récupération de compte et gestion des mots de passe',
+        remoteAccessVPN: 'Accès Distant et VPN',
+        remoteAccessVPNDesc: 'Navigation sécurisée et configuration bureau à distance pour voyages/travail',
+        techOptimization: 'Optimisation Technologique',
+        techOptimizationDesc: 'Dépannage maison intelligente, réglage réseau et mise à niveau appareils',
+        
+        // Enterprise Services
+        purviewImplementation: 'Implémentation Purview',
+        purviewImplementationDesc: 'Déploiement organisationnel des politiques de prévention de perte de données (DLP) Microsoft 365 et point de terminaison pour protéger les informations sensibles.',
+        conditionalAccess: 'Déploiement Accès Conditionnel (CAP)',
+        conditionalAccessDesc: 'Conception et implémentation de politiques d\'accès conditionnel pour imposer un accès sécurisé basé sur l\'identité dans tous les environnements.',
+        defenderOffice: 'Déploiement Microsoft Defender pour Office (MDO)',
+        defenderOfficeDesc: 'Implémentation d\'entreprise de MDO pour améliorer la protection contre les menaces par courriel et renforcer la posture de sécurité globale.',
+        informationProtection: 'Protection de l\'Information (MIP)',
+        informationProtectionDesc: 'Déploiement de Microsoft Information Protection pour la classification, l\'étiquetage et le chiffrement des données dans l\'organisation.',
+        emailEncryption: 'Chiffrement de Courriel',
+        emailEncryptionDesc: 'Conception et déploiement d\'une solution de chiffrement de courriel personnalisée, assurant des communications internes et externes sécurisées.',
+        identityManagement: 'Gestion d\'Identité et d\'Accès (IAM)',
+        identityManagementDesc: 'Architecture et déploiement de PIM, Azure RBAC, permissions Azure AD, configurations de rôles Exchange et conformité RBAC.',
+        multiFactor: 'Authentification Multi-Facteurs (MFA)',
+        multiFactorDesc: 'Déploiement de bout en bout utilisant des jetons logiciels et matériels (FIDO2) pour renforcer la vérification d\'identité.',
+        defenderCloud: 'Microsoft Defender pour Applications Cloud (MDCA)',
+        defenderCloudDesc: 'Déploiement de politiques MDCA pour surveiller et sécuriser l\'utilisation d\'applications cloud, imposer la protection des fichiers et gérer les sessions utilisateur.',
+        
+        // About Section
+        aboutTitle: 'À propos de NetSyon',
+        aboutParagraph1: 'NetSyon est un bureau de consultation spécialisé dans la sécurité cloud Microsoft, la protection des données et les solutions TI pour entreprises, PME et utilisateurs domestiques avancés. Avec plus d\'une décennie d\'expérience en consultation TI, NetSyon a été le partenaire technologique de confiance pour particuliers, petites entreprises et grandes entreprises de la région.',
+        aboutParagraph2: 'Dans un monde de plus en plus numérique, sécuriser les données et l\'infrastructure cloud est critique—non seulement pour les entreprises, mais aussi pour les particuliers gérant des maisons connectées. NetSyon aide les clients à construire des environnements numériques sécurisés, fiables et évolutifs en combinant expertise stratégique et implémentation pratique.',
+        aboutParagraph3: 'Nous fournissons des services de consultation adaptés dans l\'écosystème Microsoft, aidant organisations et particuliers à prendre le contrôle complet de leur posture de cybersécurité, gouvernance cloud et infrastructure TI.',
+        yearsExperience: 'Années d\'Expérience',
+        projectsCompleted: 'Projets Complétés',
+        supportAvailable: 'Support Disponible',
+        clientSatisfaction: 'Satisfaction Client',
+        
+        // Why Choose Section
+        whyChooseTitle: 'Pourquoi Choisir NetSyon?',
+        whyChooseDescription: 'Nous combinons une expertise technique approfondie avec un service personnalisé pour livrer des solutions qui fonctionnent',
+        provenExpertise: 'Expertise Prouvée',
+        provenExpertiseDesc: 'Années d\'expérience sur toutes les plateformes technologiques',
+        personalizedService: 'Service Personnalisé',
+        personalizedServiceDesc: 'Solutions adaptées qui correspondent à vos besoins spécifiques, budget et échéancier',
+        rapidResponse: 'Réponse Rapide',
+        rapidResponseDesc: 'Délais de réponse rapides avec support 24/7 pour problèmes critiques',
+        
+        // Contact Section
+        contactTitle: 'Contactez-Nous',
+        contactDescription: 'Prêt à sécuriser et optimiser votre infrastructure TI? Connectez-vous avec notre équipe d\'experts.',
+        contactInformation: 'Informations de Contact',
+        email: 'Courriel',
+        phone: 'Téléphone',
+        support: 'Support',
+        emergency: 'Urgence 24/7',
+        businessHours: 'Heures d\'Affaires',
+        mondayFriday: 'Lundi - Vendredi',
+        saturday: 'Samedi',
+        sunday: 'Dimanche',
+        emergencyOnly: 'Urgence Seulement',
+        
+        // Footer
+        footerDescription: 'Solutions professionnelles de consultation TI et cybersécurité pour tous les besoins',
+        privacyPolicy: 'Politique de Confidentialité',
+        termsOfService: 'Conditions d\'Utilisation',
+        footerSupport: 'Support',
+        copyright: '© 2025 NetSyon Consultation TI. Tous droits réservés.',
+      }
+    };
+    
+    return translations[language][key] || key;
+  };
+
   const getModalContent = () => {
     switch(modalContent) {
       case 'privacy':
