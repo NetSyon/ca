@@ -1144,19 +1144,19 @@ const App = () => {
               <div className="group smart-card">
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-red-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="relative z-10 p-8">
-                  <h3 className="text-2xl font-bold text-white mb-6 text-center">Business Hours</h3>
+                  <h3 className="text-2xl font-bold text-white mb-6 text-center">{t('businessHours')}</h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                     <div>
-                      <p className="text-white font-medium mb-1">Monday - Friday</p>
+                      <p className="text-white font-medium mb-1">{t('mondayFriday')}</p>
                       <p className="text-orange-400 text-sm">8:00 AM - 6:00 PM</p>
                     </div>
                     <div>
-                      <p className="text-white font-medium mb-1">Saturday</p>
+                      <p className="text-white font-medium mb-1">{t('saturday')}</p>
                       <p className="text-orange-400 text-sm">9:00 AM - 4:00 PM</p>
                     </div>
                     <div>
-                      <p className="text-white font-medium mb-1">Sunday</p>
-                      <p className="text-orange-400 text-sm">Emergency Only</p>
+                      <p className="text-white font-medium mb-1">{t('sunday')}</p>
+                      <p className="text-orange-400 text-sm">{t('emergencyOnly')}</p>
                     </div>
                   </div>
                 </div>
