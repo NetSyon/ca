@@ -276,8 +276,8 @@ const App = () => {
     switch(modalContent) {
       case 'privacy':
         return {
-          title: 'Privacy Policy',
-          content: (
+          title: language === 'en' ? 'Privacy Policy' : 'Politique de Confidentialité',
+          content: language === 'en' ? (
             <div className="space-y-6 text-slate-300">
               <div>
                 <h3 className="text-xl font-bold text-white mb-3">Privacy Policy</h3>
