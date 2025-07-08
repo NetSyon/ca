@@ -8,6 +8,7 @@ const App = () => {
   const [scrollY, setScrollY] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState('');
+  const [language, setLanguage] = useState('en'); // 'en' for English, 'fr' for French
 
   useEffect(() => {
     const handleScroll = () => {
