@@ -1108,7 +1108,7 @@ const App = () => {
               <div className="group smart-card">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="relative z-10 p-8">
-                  <h3 className="text-2xl font-bold text-white mb-6 text-center">Contact Information</h3>
+                  <h3 className="text-2xl font-bold text-white mb-6 text-center">{t('contactInformation')}</h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div className="text-center group">
                       <div className="w-12 h-12 bg-blue-400/10 border border-blue-400/30 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
@@ -1116,7 +1116,7 @@ const App = () => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
                       </div>
-                      <p className="text-slate-300 font-medium mb-1">Email</p>
+                      <p className="text-slate-300 font-medium mb-1">{t('email')}</p>
                       <p className="text-blue-400 text-sm">info@netsyon.com</p>
                     </div>
                     <div className="text-center group">
@@ -1125,7 +1125,7 @@ const App = () => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                         </svg>
                       </div>
-                      <p className="text-slate-300 font-medium mb-1">Phone</p>
+                      <p className="text-slate-300 font-medium mb-1">{t('phone')}</p>
                       <p className="text-cyan-400 text-sm">+1 (555) 123-4567</p>
                     </div>
                     <div className="text-center group">
@@ -1134,8 +1134,8 @@ const App = () => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       </div>
-                      <p className="text-slate-300 font-medium mb-1">Support</p>
-                      <p className="text-green-400 text-sm">24/7 Emergency</p>
+                      <p className="text-slate-300 font-medium mb-1">{t('support')}</p>
+                      <p className="text-green-400 text-sm">{t('emergency')}</p>
                     </div>
                   </div>
                 </div>
