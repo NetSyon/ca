@@ -178,7 +178,6 @@ const App = () => {
         learnMore: 'En Savoir Plus',
         scrollExplore: 'Défiler pour explorer',
         systemOnline: 'Système En Ligne',
-        securityActive: 'Sécurité Active',
         servicesReady: 'Services Prêts',
         
         // Services Section
