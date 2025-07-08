@@ -747,15 +747,26 @@ const App = () => {
                 <span className="text-slate-300 font-mono text-sm">
                   {time.toLocaleTimeString()}
                 </span>
-                <span className="text-green-400 text-xs">SECURE</span>
-              </div>
-              {['Home', 'Services', 'About', 'Contact'].map((item) => (
+                <span className="text-green-400 text-xs">{t('secure')}</span>
                 <button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase() === 'home' ? 'hero' : item.toLowerCase())}
+                  onClick={toggleLanguage}
+                  className="ml-4 px-2 py-1 bg-slate-800/50 hover:bg-slate-700/50 rounded border border-slate-700/50 text-slate-300 hover:text-white transition-all duration-300 text-xs"
+                >
+                  {language === 'en' ? 'FR' : 'EN'}
+                </button>
+              </div>
+              {[
+                { key: 'home', section: 'hero' },
+                { key: 'services', section: 'services' },
+                { key: 'about', section: 'about' },
+                { key: 'contact', section: 'contact' }
+              ].map((item) => (
+                <button
+                  key={item.key}
+                  onClick={() => scrollToSection(item.section)}
                   className="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-blue-400 hover:bg-slate-700/50 w-full text-left transition-all duration-300"
                 >
-                  {item}
+                  {t(item.key)}
                 </button>
               ))}
             </div>
