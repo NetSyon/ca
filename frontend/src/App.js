@@ -1464,7 +1464,11 @@ const App = () => {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-4">NetSyon</h3>
+            <img 
+              src="/cmlogo.png" 
+              alt="NetSyon" 
+              className="h-8 w-auto mx-auto mb-4"
+            />
             <p className="text-slate-300 mb-8">
               {t('footerDescription')}
             </p>
