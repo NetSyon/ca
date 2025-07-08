@@ -1081,10 +1081,6 @@ const App = () => {
             <span>{t('systemOnline')}</span>
           </div>
           <div className="flex items-center space-x-2 text-xs text-slate-400">
-            <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
-            <span>{t('securityActive')}</span>
-          </div>
-          <div className="flex items-center space-x-2 text-xs text-slate-400">
             <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
             <span>{t('servicesReady')}</span>
           </div>
