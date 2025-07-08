@@ -420,7 +420,7 @@ const App = () => {
                 <p className="text-sm">
                   Pour des questions liées à la vie privée ou pour exercer vos droits, contactez-nous à :
                   <br />Courriel : privacy@netsyon.com
-                  <br />Téléphone : +1 (555) 123-4567
+                  <br />Téléphone : +1 (514) 400-4279
                   <br />Adresse : Québec, Canada
                 </p>
               </div>
