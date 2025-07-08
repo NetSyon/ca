@@ -229,7 +229,7 @@ const App = () => {
               Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Services</span>
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto animate-fade-in-up-delay-1">
-              Comprehensive IT solutions designed for home users, small businesses, and enterprise organizations
+              Comprehensive IT solutions designed for home users and enterprise organizations
             </p>
           </div>
 
