@@ -491,7 +491,7 @@ const App = () => {
                         </svg>
                       </div>
                       <p className="text-slate-300 font-medium mb-1">Email</p>
-                      <p className="text-blue-400 text-sm">info@netsys.com</p>
+                      <p className="text-blue-400 text-sm">info@netsyon.com</p>
                     </div>
                     <div className="text-center group">
                       <div className="w-12 h-12 bg-cyan-400/10 border border-cyan-400/30 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
