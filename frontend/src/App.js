@@ -430,8 +430,8 @@ const App = () => {
 
       case 'terms':
         return {
-          title: 'Terms of Service',
-          content: (
+          title: language === 'en' ? 'Terms of Service' : 'Conditions d\'Utilisation',
+          content: language === 'en' ? (
             <div className="space-y-6 text-slate-300">
               <div>
                 <h3 className="text-xl font-bold text-white mb-3">Terms of Service</h3>
@@ -503,6 +503,81 @@ const App = () => {
                 <p className="text-sm">
                   We may update these terms periodically. Continued use of our services constitutes acceptance of updated terms.
                   Material changes will be communicated with 30 days notice.
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-6 text-slate-300">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-3">Conditions d'Utilisation</h3>
+                <p className="text-sm text-slate-400 mb-4">Date d'entrée en vigueur : 1er janvier 2025</p>
+                <p className="mb-4">
+                  Ces Conditions d'Utilisation (« Conditions ») régissent votre utilisation des services et du site web de NetSyon Consultation TI. 
+                  En utilisant nos services, vous acceptez ces conditions.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">1. Services Fournis</h4>
+                <p className="text-sm mb-2">NetSyon fournit :</p>
+                <ul className="space-y-1 text-sm list-disc list-inside">
+                  <li>Consultation en sécurité Microsoft Cloud</li>
+                  <li>Consultation en infrastructure TI</li>
+                  <li>Évaluation et implémentation de cybersécurité</li>
+                  <li>Services de protection des données et conformité</li>
+                  <li>Support technique et maintenance</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">2. Responsabilités du Client</h4>
+                <ul className="space-y-1 text-sm list-disc list-inside">
+                  <li>Fournir des informations exactes et complètes</li>
+                  <li>Maintenir la confidentialité des identifiants d'accès</li>
+                  <li>Suivre les recommandations de sécurité et meilleures pratiques</li>
+                  <li>Payer les factures selon les conditions convenues</li>
+                  <li>Respecter les lois et règlements applicables</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">3. Propriété Intellectuelle</h4>
+                <p className="text-sm">
+                  Toutes les méthodologies, outils et documentation développés par NetSyon demeurent notre propriété intellectuelle. 
+                  Les clients reçoivent des droits d'utilisation pour les solutions implémentées mais pas la propriété des méthodologies propriétaires.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">4. Limitation de Responsabilité</h4>
+                <p className="text-sm">
+                  La responsabilité de NetSyon est limitée à la valeur des services fournis. Nous ne sommes pas responsables des dommages 
+                  indirects, consécutifs ou punitifs. Nos recommandations sont basées sur les meilleures pratiques de l'industrie, 
+                  mais la cybersécurité implique des risques inhérents qui ne peuvent être complètement éliminés.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">5. Droit Applicable</h4>
+                <p className="text-sm">
+                  Ces conditions sont régies par les lois du Québec, Canada. Tout litige sera résolu par arbitrage au Québec 
+                  ou devant les tribunaux du Québec, selon le cas.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">6. Résiliation</h4>
+                <p className="text-sm">
+                  Chaque partie peut résilier les services avec un préavis écrit de 30 jours. Lors de la résiliation, toutes les informations 
+                  confidentielles doivent être retournées et les factures impayées deviennent immédiatement exigibles.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">7. Mises à Jour des Conditions</h4>
+                <p className="text-sm">
+                  Nous pouvons mettre à jour ces conditions périodiquement. L'utilisation continue de nos services constitue l'acceptation des conditions mises à jour.
+                  Les changements importants seront communiqués avec un préavis de 30 jours.
                 </p>
               </div>
             </div>
