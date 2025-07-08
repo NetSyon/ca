@@ -1419,7 +1419,7 @@ const App = () => {
                       </div>
                       <p className="text-slate-300 font-medium mb-1">{t('phone')}</p>
                       <a href="http://wa.me/15144004279" target="_blank" rel="noopener noreferrer" className="text-cyan-400 text-sm hover:text-cyan-300 transition-colors duration-300">
-                        +1 (555) 123-4567
+                        +1 (514) 400-4279
                       </a>
                     </div>
                     <div className="text-center group">
