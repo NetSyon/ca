@@ -906,15 +906,15 @@ const App = () => {
                   <h3 className="text-2xl font-bold text-white mb-6 text-center">Business Hours</h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                     <div>
-                      <p className="text-orange-300/80 font-medium mb-1">Monday - Friday</p>
+                      <p className="text-white font-medium mb-1">Monday - Friday</p>
                       <p className="text-orange-400 text-sm">8:00 AM - 6:00 PM</p>
                     </div>
                     <div>
-                      <p className="text-orange-300/80 font-medium mb-1">Saturday</p>
+                      <p className="text-white font-medium mb-1">Saturday</p>
                       <p className="text-orange-400 text-sm">9:00 AM - 4:00 PM</p>
                     </div>
                     <div>
-                      <p className="text-orange-300/80 font-medium mb-1">Sunday</p>
+                      <p className="text-white font-medium mb-1">Sunday</p>
                       <p className="text-orange-400 text-sm">Emergency Only</p>
                     </div>
                   </div>
