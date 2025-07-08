@@ -689,8 +689,14 @@ const App = () => {
                   {time.toLocaleTimeString()}
                 </span>
                 <span className="text-slate-400">|</span>
-                <span className="text-green-400 text-xs">SECURE</span>
+                <span className="text-green-400 text-xs">{t('secure')}</span>
               </div>
+              <button
+                onClick={toggleLanguage}
+                className="px-3 py-2 bg-slate-800/50 hover:bg-slate-700/50 rounded-lg border border-slate-700/50 text-slate-300 hover:text-white transition-all duration-300 text-sm font-medium"
+              >
+                {language === 'en' ? 'FR' : 'EN'}
+              </button>
             </div>
             
             <div className="hidden md:block">
