@@ -433,112 +433,58 @@ const App = () => {
               Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Touch</span>
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto animate-fade-in-up-delay-1">
-              Ready to secure and optimize your IT infrastructure? Let's discuss your needs.
+              Ready to secure and optimize your IT infrastructure? Connect with our expert team.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div className="space-y-8 animate-fade-in-left">
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-8 animate-fade-in-up">
               <div className="group bg-slate-800/30 backdrop-blur-xl rounded-3xl p-8 border border-slate-700/50 hover:border-blue-400/50 transition-all duration-500 hover:transform hover:scale-105">
                 <div className="absolute inset-0 bg-holographic opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500"></div>
                 <h3 className="text-2xl font-bold text-white mb-6 relative z-10">Contact Information</h3>
-                <div className="space-y-4 relative z-10">
-                  {[
-                    { icon: 'M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z', text: 'info@netsys.com' },
-                    { icon: 'M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z', text: '+1 (555) 123-4567' },
-                    { icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z', text: '24/7 Emergency Support' }
-                  ].map((contact, index) => (
-                    <div key={index} className="flex items-center group-hover:translate-x-2 transition-transform duration-300">
-                      <svg className="w-6 h-6 text-blue-400 mr-4 animate-pulse-gentle" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={contact.icon} />
-                      </svg>
-                      <span className="text-slate-300 group-hover:text-slate-200 transition-colors duration-300">{contact.text}</span>
-                    </div>
-                  ))}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+                  <div className="text-center">
+                    <svg className="w-8 h-8 text-blue-400 mx-auto mb-4 animate-pulse-gentle" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <p className="text-slate-300 group-hover:text-slate-200 transition-colors duration-300 font-medium">Email</p>
+                    <p className="text-slate-400 group-hover:text-slate-300 transition-colors duration-300">info@netsys.com</p>
+                  </div>
+                  <div className="text-center">
+                    <svg className="w-8 h-8 text-blue-400 mx-auto mb-4 animate-pulse-gentle" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    <p className="text-slate-300 group-hover:text-slate-200 transition-colors duration-300 font-medium">Phone</p>
+                    <p className="text-slate-400 group-hover:text-slate-300 transition-colors duration-300">+1 (555) 123-4567</p>
+                  </div>
+                  <div className="text-center">
+                    <svg className="w-8 h-8 text-blue-400 mx-auto mb-4 animate-pulse-gentle" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <p className="text-slate-300 group-hover:text-slate-200 transition-colors duration-300 font-medium">Support</p>
+                    <p className="text-slate-400 group-hover:text-slate-300 transition-colors duration-300">24/7 Emergency</p>
+                  </div>
                 </div>
               </div>
               
               <div className="group bg-slate-800/30 backdrop-blur-xl rounded-3xl p-8 border border-slate-700/50 hover:border-blue-400/50 transition-all duration-500 hover:transform hover:scale-105">
                 <div className="absolute inset-0 bg-holographic opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500"></div>
                 <h3 className="text-2xl font-bold text-white mb-6 relative z-10">Business Hours</h3>
-                <div className="space-y-2 text-slate-300 relative z-10">
-                  {[
-                    { day: 'Monday - Friday', time: '8:00 AM - 6:00 PM' },
-                    { day: 'Saturday', time: '9:00 AM - 4:00 PM' },
-                    { day: 'Sunday', time: 'Emergency Support Only' }
-                  ].map((schedule, index) => (
-                    <div key={index} className="flex justify-between group-hover:text-slate-200 transition-colors duration-300">
-                      <span>{schedule.day}</span>
-                      <span>{schedule.time}</span>
-                    </div>
-                  ))}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center relative z-10">
+                  <div>
+                    <p className="text-slate-300 group-hover:text-slate-200 transition-colors duration-300 font-medium">Monday - Friday</p>
+                    <p className="text-slate-400 group-hover:text-slate-300 transition-colors duration-300">8:00 AM - 6:00 PM</p>
+                  </div>
+                  <div>
+                    <p className="text-slate-300 group-hover:text-slate-200 transition-colors duration-300 font-medium">Saturday</p>
+                    <p className="text-slate-400 group-hover:text-slate-300 transition-colors duration-300">9:00 AM - 4:00 PM</p>
+                  </div>
+                  <div>
+                    <p className="text-slate-300 group-hover:text-slate-200 transition-colors duration-300 font-medium">Sunday</p>
+                    <p className="text-slate-400 group-hover:text-slate-300 transition-colors duration-300">Emergency Only</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            <div className="bg-slate-800/30 backdrop-blur-xl rounded-3xl p-8 border border-slate-700/50 hover:border-blue-400/50 transition-all duration-500 animate-fade-in-right">
-              <h3 className="text-2xl font-bold text-white mb-6">Request Consultation</h3>
-              <form className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="w-full px-4 py-3 bg-slate-900/50 backdrop-blur-sm border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 hover:border-blue-400/50"
-                    placeholder="Your full name"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full px-4 py-3 bg-slate-900/50 backdrop-blur-sm border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 hover:border-blue-400/50"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-slate-300 mb-2">
-                    Service Type
-                  </label>
-                  <select
-                    id="service"
-                    className="w-full px-4 py-3 bg-slate-900/50 backdrop-blur-sm border border-slate-600 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 hover:border-blue-400/50"
-                  >
-                    <option value="">Select a service</option>
-                    <option value="home">Home User Support</option>
-                    <option value="smb">Small & Medium Business</option>
-                    <option value="enterprise">Enterprise Solutions</option>
-                  </select>
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={4}
-                    className="w-full px-4 py-3 bg-slate-900/50 backdrop-blur-sm border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 hover:border-blue-400/50"
-                    placeholder="Tell us about your IT needs..."
-                  ></textarea>
-                </div>
-                
-                <button
-                  type="submit"
-                  className="group w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-xl shadow-glow-blue hover:shadow-glow-blue-intense transform hover:scale-105 transition-all duration-300 relative overflow-hidden"
-                >
-                  <span className="relative z-10">Send Message</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500 skew-x-12"></div>
-                </button>
-              </form>
             </div>
           </div>
         </div>
