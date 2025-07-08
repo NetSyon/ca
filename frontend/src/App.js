@@ -346,7 +346,7 @@ const App = () => {
                 <p className="text-sm">
                   For privacy-related questions or to exercise your rights, contact us at:
                   <br />Email: privacy@netsyon.com
-                  <br />Phone: +1 (555) 123-4567
+                  <br />Phone: +1 (514) 400-4279
                   <br />Address: Quebec, Canada
                 </p>
               </div>
