@@ -101,3 +101,35 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Remove Security Active from fr and en versions"
+
+frontend:
+  - task: "Remove Security Active text from hero section status indicators"
+    implemented: false
+    working: "NA"
+    file: "/app/frontend/src/App.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Located Security Active text in hero section status indicators (line 1087) and translation keys (lines 78, 182). Need to remove this text from both English and French versions."
+
+metadata:
+  created_by: "main_agent"
+  version: "1.0"
+  test_sequence: 0
+  run_ui: false
+
+test_plan:
+  current_focus:
+    - "Remove Security Active text from hero section status indicators"
+  stuck_tasks: []
+  test_all: false
+  test_priority: "high_first"
+
+agent_communication:
+  - agent: "main"
+    message: "Found Security Active text in hero section status indicators at line 1087. Also found translation keys at lines 78 and 182. Will remove the entire status indicator div and its corresponding translation keys."
