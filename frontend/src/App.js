@@ -863,10 +863,10 @@ const App = () => {
           <div className="text-center mb-16">
             <div className="smart-container">
               <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                Our <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Services</span>
+                {t('servicesTitle')} <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent"></span>
               </h2>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-                Comprehensive IT solutions designed for home users and enterprise organizations
+                {t('servicesDescription')}
               </p>
             </div>
           </div>
