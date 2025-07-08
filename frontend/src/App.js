@@ -767,9 +767,10 @@ const App = () => {
               </div>
               <button
                 onClick={toggleLanguage}
-                className="px-3 py-2 bg-slate-800/50 hover:bg-slate-700/50 rounded-lg border border-slate-700/50 text-slate-300 hover:text-white transition-all duration-300 text-sm font-medium"
+                className="px-3 py-2 bg-slate-800/50 hover:bg-slate-700/50 rounded-lg border border-slate-700/50 text-slate-300 hover:text-white transition-all duration-300 text-sm font-medium flex items-center space-x-2"
               >
-                {language === 'en' ? 'FR' : 'EN'}
+                <span className="text-base">🌐</span>
+                <span>{language === 'en' ? 'FR' : 'EN'}</span>
               </button>
             </div>
             
