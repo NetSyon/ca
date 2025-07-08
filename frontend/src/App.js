@@ -71,7 +71,7 @@ const App = () => {
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                  NetSys
+                  NetSyon
                 </h1>
               </div>
             </div>
