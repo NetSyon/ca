@@ -106,7 +106,7 @@ user_problem_statement: "Remove Security Active from fr and en versions"
 
 frontend:
   - task: "Remove Security Active text from hero section status indicators"
-    implemented: false
+    implemented: true
     working: "NA"
     file: "/app/frontend/src/App.js"
     stuck_count: 0
@@ -116,6 +116,9 @@ frontend:
       - working: "NA"
         agent: "main"
         comment: "Located Security Active text in hero section status indicators (line 1087) and translation keys (lines 78, 182). Need to remove this text from both English and French versions."
+      - working: "NA"
+        agent: "main"
+        comment: "Removed securityActive translation keys from both English and French versions. Removed the entire status indicator div that displayed Security Active text from hero section."
 
 metadata:
   created_by: "main_agent"
