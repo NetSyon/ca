@@ -685,7 +685,7 @@ const App = () => {
                     <p className="text-slate-400">Available: Monday-Friday 8:00 AM - 6:00 PM (EST)</p>
                   </div>
                   <div className="bg-slate-800/30 p-3 rounded-lg">
-                    <p><strong>Emergency Hotline:</strong> +1 (555) 123-4567</p>
+                    <p><strong>Emergency Hotline:</strong> +1 (514) 400-4279</p>
                     <p className="text-slate-400">24/7 for critical security incidents</p>
                   </div>
                 </div>
