@@ -187,7 +187,7 @@ const App = () => {
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
-                From home networks to enterprise infrastructure, NetSys delivers comprehensive IT consulting 
+                From home networks to enterprise infrastructure, NetSyon delivers comprehensive IT consulting 
                 and cybersecurity solutions tailored to your unique requirements.
               </p>
             </div>
