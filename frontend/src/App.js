@@ -6,6 +6,8 @@ const App = () => {
   const [activeSection, setActiveSection] = useState('hero');
   const [time, setTime] = useState(new Date());
   const [scrollY, setScrollY] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  const [modalContent, setModalContent] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
