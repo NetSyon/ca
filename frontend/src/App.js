@@ -1046,24 +1046,24 @@ const App = () => {
                 icon: (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 ),
-                title: 'Proven Expertise',
-                description: 'Years of experience across all technology platforms',
+                titleKey: 'provenExpertise',
+                descriptionKey: 'provenExpertiseDesc',
                 color: 'blue'
               },
               {
                 icon: (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 ),
-                title: 'Personalized Service',
-                description: 'Tailored solutions that fit your specific needs, budget, and timeline',
+                titleKey: 'personalizedService',
+                descriptionKey: 'personalizedServiceDesc',
                 color: 'cyan'
               },
               {
                 icon: (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 ),
-                title: 'Rapid Response',
-                description: 'Quick turnaround times with 24/7 support for critical issues',
+                titleKey: 'rapidResponse',
+                descriptionKey: 'rapidResponseDesc',
                 color: 'green'
               }
             ].map((feature, index) => (
@@ -1075,9 +1075,9 @@ const App = () => {
                         {feature.icon}
                       </svg>
                     </div>
-                    <h3 className={`text-xl font-bold text-white mb-4 group-hover:text-${feature.color}-400 transition-colors duration-300`}>{feature.title}</h3>
+                    <h3 className={`text-xl font-bold text-white mb-4 group-hover:text-${feature.color}-400 transition-colors duration-300`}>{t(feature.titleKey)}</h3>
                     <p className="text-slate-300 leading-relaxed">
-                      {feature.description}
+                      {t(feature.descriptionKey)}
                     </p>
                   </div>
                 </div>
