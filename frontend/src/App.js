@@ -406,7 +406,7 @@ const App = () => {
           <div className="text-center mb-16">
             <div className="smart-container">
               <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                Why Choose <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">NetSys?</span>
+                Why Choose <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">NetSyon?</span>
               </h2>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto">
                 We combine deep technical expertise with personalized service to deliver solutions that work
