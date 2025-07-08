@@ -617,3 +617,22 @@ button:focus {
     0 4px 6px -2px rgba(0, 0, 0, 0.05),
     0 0 0 1px rgba(255, 255, 255, 0.05);
 }
+
+/* Custom Modal Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(30, 41, 59, 0.3);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #3b82f6, #06b6d4);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #2563eb, #0891b2);
+}
