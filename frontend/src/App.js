@@ -190,18 +190,18 @@ const App = () => {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 pt-8 animate-fade-in-up-delay-2">
               <button
-                onClick={() => scrollToSection('contact')}
+                onClick={() => scrollToSection('services')}
                 className="group px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg shadow-glow-blue hover:shadow-glow-blue-intense transform hover:scale-105 transition-all duration-300 relative overflow-hidden"
               >
-                <span className="relative z-10">Get Free Consultation</span>
+                <span className="relative z-10">View Our Services</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500 skew-x-12"></div>
               </button>
               <button
-                onClick={() => scrollToSection('services')}
+                onClick={() => scrollToSection('about')}
                 className="group px-8 py-4 border-2 border-blue-400 text-blue-400 font-semibold rounded-lg hover:bg-blue-400/20 hover:shadow-glow-blue-sm transition-all duration-300 relative overflow-hidden"
               >
-                <span className="relative z-10">View Our Services</span>
+                <span className="relative z-10">Learn More</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-400/0 via-blue-400/20 to-blue-400/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
               </button>
             </div>
