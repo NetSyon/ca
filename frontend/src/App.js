@@ -42,6 +42,389 @@ const App = () => {
     setIsMenuOpen(false);
   };
 
+  const openModal = (content) => {
+    setModalContent(content);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setModalContent('');
+  };
+
+  const getModalContent = () => {
+    switch(modalContent) {
+      case 'privacy':
+        return {
+          title: 'Privacy Policy',
+          content: (
+            <div className="space-y-6 text-slate-300">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-3">Privacy Policy</h3>
+                <p className="text-sm text-slate-400 mb-4">Effective Date: January 1, 2025</p>
+                <p className="mb-4">
+                  NetSyon IT Consulting ("NetSyon," "we," "us," or "our") is committed to protecting your privacy. 
+                  This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you 
+                  visit our website or use our services.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">1. Information We Collect</h4>
+                <div className="space-y-2 text-sm">
+                  <p><strong>Personal Information:</strong> Name, email address, phone number, company details, and project requirements.</p>
+                  <p><strong>Technical Information:</strong> IP address, browser type, device information, and website usage analytics.</p>
+                  <p><strong>Professional Information:</strong> IT infrastructure details, security requirements, and business needs (only with explicit consent).</p>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">2. How We Use Your Information</h4>
+                <ul className="space-y-1 text-sm list-disc list-inside">
+                  <li>Provide IT consulting and cybersecurity services</li>
+                  <li>Communicate regarding projects and support</li>
+                  <li>Improve our services and website functionality</li>
+                  <li>Comply with legal obligations</li>
+                  <li>Send relevant industry updates (with consent)</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">3. Information Sharing</h4>
+                <p className="text-sm">
+                  We do not sell, trade, or rent your personal information. We may share information only with:
+                </p>
+                <ul className="space-y-1 text-sm list-disc list-inside mt-2">
+                  <li>Trusted service providers bound by confidentiality agreements</li>
+                  <li>Legal authorities when required by law</li>
+                  <li>Microsoft partners for cloud services implementation (with consent)</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">4. Data Security</h4>
+                <p className="text-sm">
+                  We implement industry-standard security measures including encryption, secure transmission protocols, 
+                  and regular security audits to protect your information. Our team follows Microsoft security best practices 
+                  and maintains relevant cybersecurity certifications.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">5. Your Rights (Quebec Privacy Act)</h4>
+                <ul className="space-y-1 text-sm list-disc list-inside">
+                  <li>Right to access your personal information</li>
+                  <li>Right to correct inaccurate information</li>
+                  <li>Right to request deletion of your data</li>
+                  <li>Right to withdraw consent</li>
+                  <li>Right to file a complaint with Quebec's privacy commissioner</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">6. Contact Information</h4>
+                <p className="text-sm">
+                  For privacy-related questions or to exercise your rights, contact us at:
+                  <br />Email: privacy@netsyon.com
+                  <br />Phone: +1 (555) 123-4567
+                  <br />Address: Quebec, Canada
+                </p>
+              </div>
+            </div>
+          )
+        };
+
+      case 'terms':
+        return {
+          title: 'Terms of Service',
+          content: (
+            <div className="space-y-6 text-slate-300">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-3">Terms of Service</h3>
+                <p className="text-sm text-slate-400 mb-4">Effective Date: January 1, 2025</p>
+                <p className="mb-4">
+                  These Terms of Service ("Terms") govern your use of NetSyon IT Consulting services and website. 
+                  By engaging our services, you agree to these terms.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">1. Services Provided</h4>
+                <p className="text-sm mb-2">NetSyon provides:</p>
+                <ul className="space-y-1 text-sm list-disc list-inside">
+                  <li>Microsoft Cloud security consulting</li>
+                  <li>IT infrastructure consulting</li>
+                  <li>Cybersecurity assessment and implementation</li>
+                  <li>Data protection and compliance services</li>
+                  <li>Technical support and maintenance</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">2. Client Responsibilities</h4>
+                <ul className="space-y-1 text-sm list-disc list-inside">
+                  <li>Provide accurate and complete information</li>
+                  <li>Maintain confidentiality of access credentials</li>
+                  <li>Follow security recommendations and best practices</li>
+                  <li>Pay invoices according to agreed terms</li>
+                  <li>Comply with applicable laws and regulations</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">3. Intellectual Property</h4>
+                <p className="text-sm">
+                  All methodologies, tools, and documentation developed by NetSyon remain our intellectual property. 
+                  Clients receive usage rights for implemented solutions but not ownership of proprietary methodologies.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">4. Limitation of Liability</h4>
+                <p className="text-sm">
+                  NetSyon's liability is limited to the value of services provided. We are not liable for indirect, 
+                  consequential, or punitive damages. Our recommendations are based on industry best practices, 
+                  but cybersecurity involves inherent risks that cannot be completely eliminated.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">5. Governing Law</h4>
+                <p className="text-sm">
+                  These terms are governed by the laws of Quebec, Canada. Any disputes will be resolved through 
+                  arbitration in Quebec or Quebec courts, as applicable.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">6. Termination</h4>
+                <p className="text-sm">
+                  Either party may terminate services with 30 days written notice. Upon termination, all confidential 
+                  information must be returned, and outstanding invoices become immediately due.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">7. Updates to Terms</h4>
+                <p className="text-sm">
+                  We may update these terms periodically. Continued use of our services constitutes acceptance of updated terms.
+                  Material changes will be communicated with 30 days notice.
+                </p>
+              </div>
+            </div>
+          )
+        };
+
+      case 'security':
+        return {
+          title: 'Security',
+          content: (
+            <div className="space-y-6 text-slate-300">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-3">Security Framework</h3>
+                <p className="mb-4">
+                  NetSyon maintains the highest security standards to protect our clients' data and infrastructure. 
+                  Our security approach is built on industry best practices and continuous improvement.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">🔐 Data Protection Measures</h4>
+                <ul className="space-y-2 text-sm list-disc list-inside">
+                  <li><strong>Encryption:</strong> AES-256 encryption for data at rest and TLS 1.3 for data in transit</li>
+                  <li><strong>Access Controls:</strong> Multi-factor authentication and role-based access controls</li>
+                  <li><strong>Network Security:</strong> Firewalls, VPN access, and network segmentation</li>
+                  <li><strong>Backup & Recovery:</strong> Automated, encrypted backups with tested recovery procedures</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">🛡️ Microsoft Security Expertise</h4>
+                <ul className="space-y-2 text-sm list-disc list-inside">
+                  <li><strong>Azure Security:</strong> Advanced threat protection and security monitoring</li>
+                  <li><strong>Microsoft 365:</strong> Defender for Office 365, Conditional Access, and DLP policies</li>
+                  <li><strong>Identity Management:</strong> Azure AD, Privileged Identity Management (PIM)</li>
+                  <li><strong>Compliance:</strong> GDPR, SOC 2, ISO 27001 frameworks</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">🔍 Security Monitoring</h4>
+                <ul className="space-y-2 text-sm list-disc list-inside">
+                  <li><strong>24/7 Monitoring:</strong> Continuous security event monitoring and alerting</li>
+                  <li><strong>Threat Intelligence:</strong> Real-time threat intelligence and vulnerability assessments</li>
+                  <li><strong>Incident Response:</strong> Rapid response team with established escalation procedures</li>
+                  <li><strong>Security Audits:</strong> Regular security assessments and penetration testing</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">📋 Compliance & Certifications</h4>
+                <ul className="space-y-2 text-sm list-disc list-inside">
+                  <li><strong>Microsoft Certifications:</strong> Azure Security Engineer, Microsoft 365 Security Administrator</li>
+                  <li><strong>Industry Standards:</strong> ISO 27001, NIST Cybersecurity Framework</li>
+                  <li><strong>Privacy Compliance:</strong> GDPR, Quebec Privacy Act, PIPEDA</li>
+                  <li><strong>Regular Training:</strong> Continuous security awareness and certification maintenance</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">🚨 Incident Response</h4>
+                <div className="space-y-2 text-sm">
+                  <p><strong>Response Time:</strong> Critical incidents acknowledged within 1 hour</p>
+                  <p><strong>Communication:</strong> Real-time updates and post-incident reports</p>
+                  <p><strong>Recovery:</strong> Documented procedures for business continuity</p>
+                  <p><strong>Learning:</strong> Post-incident analysis and security improvements</p>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">📞 Security Contact</h4>
+                <p className="text-sm">
+                  For security-related concerns or to report vulnerabilities:
+                  <br />Email: security@netsyon.com
+                  <br />Emergency Hotline: +1 (555) 123-4567 (24/7)
+                  <br />Encrypted Communication: Available upon request
+                </p>
+              </div>
+            </div>
+          )
+        };
+
+      case 'support':
+        return {
+          title: 'Support',
+          content: (
+            <div className="space-y-6 text-slate-300">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-3">Technical Support</h3>
+                <p className="mb-4">
+                  NetSyon provides comprehensive technical support to ensure your IT infrastructure runs smoothly 
+                  and securely. Our support team combines deep Microsoft expertise with responsive service.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">📞 Support Channels</h4>
+                <div className="space-y-3 text-sm">
+                  <div className="bg-slate-800/30 p-3 rounded-lg">
+                    <p><strong>Email Support:</strong> support@netsyon.com</p>
+                    <p className="text-slate-400">Response time: 4 hours during business hours</p>
+                  </div>
+                  <div className="bg-slate-800/30 p-3 rounded-lg">
+                    <p><strong>Phone Support:</strong> +1 (555) 123-4567</p>
+                    <p className="text-slate-400">Available: Monday-Friday 8:00 AM - 6:00 PM (EST)</p>
+                  </div>
+                  <div className="bg-slate-800/30 p-3 rounded-lg">
+                    <p><strong>Emergency Hotline:</strong> +1 (555) 123-4567</p>
+                    <p className="text-slate-400">24/7 for critical security incidents</p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">🎯 Support Levels</h4>
+                <div className="space-y-3 text-sm">
+                  <div className="border-l-4 border-green-400 pl-4">
+                    <p><strong>Basic Support</strong> - Included with all services</p>
+                    <p className="text-slate-400">Email support, documentation, basic troubleshooting</p>
+                  </div>
+                  <div className="border-l-4 border-blue-400 pl-4">
+                    <p><strong>Premium Support</strong> - For managed services clients</p>
+                    <p className="text-slate-400">Priority phone support, proactive monitoring, faster response</p>
+                  </div>
+                  <div className="border-l-4 border-orange-400 pl-4">
+                    <p><strong>Enterprise Support</strong> - For large organizations</p>
+                    <p className="text-slate-400">Dedicated support manager, 24/7 availability, SLA guarantees</p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">⚡ Response Times</h4>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-slate-700">
+                        <th className="text-left py-2">Priority</th>
+                        <th className="text-left py-2">Response Time</th>
+                        <th className="text-left py-2">Resolution Target</th>
+                      </tr>
+                    </thead>
+                    <tbody className="space-y-2">
+                      <tr className="border-b border-slate-800">
+                        <td className="py-2 text-red-400">Critical</td>
+                        <td className="py-2">1 hour</td>
+                        <td className="py-2">4 hours</td>
+                      </tr>
+                      <tr className="border-b border-slate-800">
+                        <td className="py-2 text-orange-400">High</td>
+                        <td className="py-2">4 hours</td>
+                        <td className="py-2">1 business day</td>
+                      </tr>
+                      <tr className="border-b border-slate-800">
+                        <td className="py-2 text-blue-400">Medium</td>
+                        <td className="py-2">8 hours</td>
+                        <td className="py-2">3 business days</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 text-green-400">Low</td>
+                        <td className="py-2">24 hours</td>
+                        <td className="py-2">5 business days</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">🛠️ Self-Service Resources</h4>
+                <ul className="space-y-2 text-sm list-disc list-inside">
+                  <li><strong>Knowledge Base:</strong> Comprehensive documentation and tutorials</li>
+                  <li><strong>Security Guides:</strong> Best practices for Microsoft 365 and Azure</li>
+                  <li><strong>Video Tutorials:</strong> Step-by-step implementation guides</li>
+                  <li><strong>Community Forum:</strong> Connect with other NetSyon clients</li>
+                  <li><strong>Monthly Webinars:</strong> Latest security trends and updates</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">🔧 Remote Support Capabilities</h4>
+                <ul className="space-y-2 text-sm list-disc list-inside">
+                  <li><strong>Secure Remote Access:</strong> Encrypted remote desktop support</li>
+                  <li><strong>Cloud Management:</strong> Direct Azure and Microsoft 365 administration</li>
+                  <li><strong>Network Monitoring:</strong> Real-time infrastructure monitoring</li>
+                  <li><strong>Automated Patching:</strong> Scheduled maintenance and updates</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">📊 Support Analytics</h4>
+                <p className="text-sm mb-2">We provide detailed support metrics including:</p>
+                <ul className="space-y-1 text-sm list-disc list-inside">
+                  <li>Monthly support summary reports</li>
+                  <li>Response and resolution time tracking</li>
+                  <li>System uptime and performance metrics</li>
+                  <li>Security incident reports and remediation status</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">📧 Contact Our Support Team</h4>
+                <p className="text-sm">
+                  Ready to get help? Contact us using your preferred method above, or email us with details about your issue. 
+                  Please include your contact information, a description of the problem, and any error messages you're seeing.
+                </p>
+              </div>
+            </div>
+          )
+        };
+
+      default:
+        return { title: '', content: null };
+    }
+  };
+
   // Floating tech particles
   const TechParticles = () => {
     return (
