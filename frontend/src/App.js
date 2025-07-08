@@ -883,33 +883,33 @@ const App = () => {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-3xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">Home Users</h3>
+                    <h3 className="text-3xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">{t('homeUsers')}</h3>
                     <div className="flex items-center space-x-2 text-sm text-slate-400">
                       <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                      <span>Residential Solutions</span>
+                      <span>{t('homeUsersStatus')}</span>
                     </div>
                   </div>
                 </div>
                 
                 <p className="text-slate-300 mb-8 text-lg leading-relaxed">
-                  Comprehensive technology support and cybersecurity solutions for families and individuals.
+                  {t('homeUsersDescription')}
                 </p>
                 
                 <div className="space-y-4">
                   {[
-                    { icon: '📡', title: 'Home Network Security', desc: 'Wi-Fi setup, firewall hardening, parental controls & guest isolation' },
-                    { icon: '💻', title: 'Device Protection', desc: 'Antivirus, IoT monitoring & secure setup of smart devices (TVs, cams, etc.)' },
-                    { icon: '🧠', title: 'Cyber Awareness', desc: 'Family-focused training on phishing, passwords & online safety' },
-                    { icon: '🔐', title: 'Data Privacy & Backup', desc: 'Cloud backup config, encryption, GDPR-friendly storage (NAS)' },
-                    { icon: '👥', title: 'User Access Control', desc: 'MFA setup, account recovery & password management' },
-                    { icon: '🌍', title: 'Remote Access & VPN', desc: 'Secure browsing & remote desktop setup for travel/work' },
-                    { icon: '⚙️', title: 'Tech Optimization', desc: 'Smart home troubleshooting, network tuning, and device upgrades' }
+                    { key: 'homeNetworkSecurity', descKey: 'homeNetworkSecurityDesc', icon: '📡' },
+                    { key: 'deviceProtection', descKey: 'deviceProtectionDesc', icon: '💻' },
+                    { key: 'cyberAwareness', descKey: 'cyberAwarenessDesc', icon: '🧠' },
+                    { key: 'dataPrivacyBackup', descKey: 'dataPrivacyBackupDesc', icon: '🔐' },
+                    { key: 'userAccessControl', descKey: 'userAccessControlDesc', icon: '👥' },
+                    { key: 'remoteAccessVPN', descKey: 'remoteAccessVPNDesc', icon: '🌍' },
+                    { key: 'techOptimization', descKey: 'techOptimizationDesc', icon: '⚙️' }
                   ].map((service, index) => (
                     <div key={index} className="flex items-start p-4 bg-slate-800/30 backdrop-blur-sm rounded-xl hover:bg-slate-800/50 transition-all duration-300 service-item">
                       <span className="text-xl mr-4 mt-1">{service.icon}</span>
                       <div className="flex-1">
-                        <h4 className="font-semibold text-blue-400 mb-2">{service.title}</h4>
-                        <p className="text-sm text-slate-300 leading-relaxed">{service.desc}</p>
+                        <h4 className="font-semibold text-blue-400 mb-2">{t(service.key)}</h4>
+                        <p className="text-sm text-slate-300 leading-relaxed">{t(service.descKey)}</p>
                       </div>
                     </div>
                   ))}
