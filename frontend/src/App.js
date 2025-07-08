@@ -2,980 +2,270 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 const App = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
-  const [language, setLanguage] = useState('en');
-  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
-  const [showTermsOfUse, setShowTermsOfUse] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const sections = ['hero', 'services', 'about', 'contact'];
+      const scrollPosition = window.scrollY + 100;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const element = document.getElementById(sections[i]);
+        if (element && element.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
+    setIsMenuOpen(false);
   };
-
-  const toggleLanguage = () => {
-    setLanguage(language === 'en' ? 'fr' : 'en');
-  };
-
-  const translations = {
-    en: {
-      nav: {
-        home: 'Home',
-        services: 'Services',
-        about: 'About',
-        contact: 'Contact',
-        getStarted: 'Get Started'
-      },
-      hero: {
-        title: 'Your Trusted',
-        subtitle: 'IT Partner',
-        description: 'Empowering homes, businesses, and enterprises with cutting-edge IT solutions. From personal tech support to enterprise-grade infrastructure.',
-        exploreServices: 'Explore Services',
-        contactUs: 'Contact Us'
-      },
-      services: {
-        title: 'Comprehensive IT Solutions',
-        subtitle: 'Tailored technology services for every need - from personal computing to enterprise infrastructure',
-        home: {
-          title: 'Home Users & Cybersecurity',
-          description: 'Comprehensive home IT security and optimization services for modern families',
-          items: [
-            '📡 Home Network Security – Wi-Fi setup, firewall hardening, parental controls & guest isolation',
-            '💻 Device Protection – Antivirus, IoT monitoring & secure setup of smart devices (TVs, cams, etc.)',
-            '🧠 Cyber Awareness – Family-focused training on phishing, passwords & online safety',
-            '🔐 Data Privacy & Backup – Cloud backup config, encryption, GDPR-friendly storage (NAS)',
-            '👥 User Access Control – MFA setup, account recovery & password management',
-            '🌍 Remote Access & VPN – Secure browsing & remote desktop setup for travel/work',
-            '⚙️ Tech Optimization – Smart home troubleshooting, network tuning, and device upgrades'
-          ]
-        },
-        smb: {
-          title: 'Small & Medium Business',
-          description: 'Scalable IT solutions and security services designed to protect and grow your business',
-          items: [
-            'Managed IT Services & Support',
-            'Business Email Security & Encryption',
-            'Cloud Migration & Management',
-            'Multi-Factor Authentication Setup',
-            'Business Continuity Planning'
-          ]
-        },
-        enterprise: {
-          title: 'Enterprise Security',
-          description: 'Advanced security implementations and compliance solutions for large organizations',
-          items: [
-            'DLP Implementation – Organization-wide deployment of Microsoft 365 and Endpoint-based Data Loss Prevention policies to safeguard sensitive information',
-            'Conditional Access (CAP) Rollout – Design and implementation of Conditional Access Policies to enforce secure, identity-based access across all environments',
-            'Microsoft Defender for Office (MDO) Deployment – Enterprise-wide implementation of MDO to enhance email threat protection and security posture',
-            'Information Protection (MIP) – Deployment of Microsoft Information Protection (formerly AIP) for data classification, labeling, and encryption across the organization',
-            'Email Encryption – Design and deployment of a customized email encryption solution, tailored for secure external and internal communications',
-            'Identity and Access Management (IAM) – Architecture and rollout of Privileged Identity Management (PIM), Azure RBAC, Azure AD permissions, Exchange role configurations, and enforcement of RBAC compliance',
-            'Multi-Factor Authentication (MFA) – End-to-end deployment of MFA using both software and hardware tokens (FIDO2) to strengthen authentication across all user groups',
-            'Microsoft Defender for Cloud Apps (MDCA) – Deployment of MDCA security policies, including file protection, identity management, and session control'
-          ]
-        },
-        learnMore: ''
-      },
-      whyChoose: {
-        title: 'Why Choose NetSyon?',
-        subtitle: 'Experience the difference of working with a trusted IT partner',
-        fastResponse: {
-          title: 'Fast Response',
-          description: 'Quick response times and efficient problem resolution'
-        },
-        expertise: {
-          title: 'Proven Expertise',
-          description: 'Years of experience across all technology platforms'
-        },
-        costEffective: {
-          title: 'Cost Effective',
-          description: 'Competitive pricing with transparent service rates'
-        }
-      },
-      about: {
-        title: 'About NetSyon',
-        description: 'NetSyon is a consulting office specializing in Microsoft Cloud security, data protection, and IT solutions for businesses, SMBs, and advanced home users. With over a decade of experience in IT consulting, NetSyon has been the trusted technology partner for individuals, small businesses, and large enterprises across the region.',
-        subtitle: 'In an increasingly digital world, securing data and cloud infrastructure is critical—not only for enterprises, but also for individuals managing connected homes. NetSyon helps clients build secure, reliable, and scalable digital environments by combining strategic expertise with hands-on implementation.',
-        expertise: 'We provide tailored consulting services across the Microsoft ecosystem, helping organizations and individuals take full control of their cybersecurity posture, cloud governance, and IT infrastructure.',
-        mission: {
-          title: 'Mission',
-          description: 'To simplify technology and empower our clients with reliable, innovative IT solutions that drive success.'
-        },
-        vision: {
-          title: 'Vision',
-          description: 'To be the leading IT consulting firm, known for exceptional service and innovative solutions.'
-        }
-      },
-      contact: {
-        title: 'Ready to Get Started?',
-        subtitle: 'Contact us today to discover how NetSyon can transform your technology experience',
-        getInTouch: 'Get in Touch',
-        phone: 'WhatsApp',
-        email: 'Email',
-        address: 'Address'
-      },
-      footer: {
-        description: 'Your trusted IT partner for comprehensive technology solutions.',
-        services: 'Services',
-        company: 'Company',
-        support: 'Support',
-        copyright: '© 2024 NetSyon. All rights reserved.'
-      },
-      allServices: {
-        title: 'All Services',
-        subtitle: 'Comprehensive cybersecurity and IT solutions from our experienced team',
-        profile: {
-          title: 'Sr. Microsoft Security Cloud Solution Architect (CSA) | Azure Security Engineer | Cybersecurity',
-          company: 'NetSyon',
-          period: 'Jan 2013 - Present · 12 yrs 7 mos'
-        },
-        enterprise: {
-          title: '🔐 Enterprise Security Projects',
-          services: [
-            {
-              name: 'DLP Implementation',
-              description: 'Organization-wide deployment of Microsoft 365 and Endpoint-based Data Loss Prevention policies to safeguard sensitive information.'
-            },
-            {
-              name: 'Conditional Access (CAP) Rollout',
-              description: 'Design and implementation of Conditional Access Policies to enforce secure, identity-based access across all environments.'
-            },
-            {
-              name: 'Microsoft Defender for Office (MDO) Deployment',
-              description: 'Enterprise-wide implementation of MDO to enhance email threat protection and security posture.'
-            },
-            {
-              name: 'Information Protection (MIP)',
-              description: 'Deployment of Microsoft Information Protection (formerly AIP) for data classification, labeling, and encryption across the organization.'
-            },
-            {
-              name: 'Email Encryption',
-              description: 'Design and deployment of a customized email encryption solution, tailored for secure external and internal communications.'
-            },
-            {
-              name: 'Identity and Access Management (IAM)',
-              description: 'Architecture and rollout of Privileged Identity Management (PIM), Azure RBAC, Azure AD permissions, Exchange role configurations, and enforcement of RBAC compliance.'
-            },
-            {
-              name: 'Multi-Factor Authentication (MFA)',
-              description: 'End-to-end deployment of MFA using both software and hardware tokens (FIDO2) to strengthen authentication across all user groups.'
-            },
-            {
-              name: 'Microsoft Defender for Cloud Apps (MDCA)',
-              description: 'Deployment of MDCA security policies, including file protection, identity management, and session control.'
-            }
-          ]
-        },
-        home: {
-          title: '🏠 Home IT Users & Cybersecurity Services',
-          services: [
-            {
-              name: '📡 Home Network Security',
-              description: 'Wi-Fi setup, firewall hardening, parental controls & guest isolation'
-            },
-            {
-              name: '💻 Device Protection',
-              description: 'Antivirus, IoT monitoring & secure setup of smart devices (TVs, cams, etc.)'
-            },
-            {
-              name: '🧠 Cyber Awareness',
-              description: 'Family-focused training on phishing, passwords & online safety'
-            },
-            {
-              name: '🔐 Data Privacy & Backup',
-              description: 'Cloud backup config, encryption, GDPR-friendly storage (NAS)'
-            },
-            {
-              name: '👥 User Access Control',
-              description: 'MFA setup, account recovery & password management'
-            },
-            {
-              name: '🌍 Remote Access & VPN',
-              description: 'Secure browsing & remote desktop setup for travel/work'
-            },
-            {
-              name: '⚙️ Tech Optimization',
-              description: 'Smart home troubleshooting, network tuning, and device upgrades'
-            }
-          ]
-        }
-      },
-      privacyPolicy: {
-        title: 'Privacy Policy',
-        lastUpdated: 'Last Updated: December 2024',
-        sections: {
-          introduction: {
-            title: 'Introduction',
-            content: 'NetSyon is committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our IT consulting services.'
-          },
-          informationWeCollect: {
-            title: 'Information We Collect',
-            subtitle1: 'Personal Information',
-            content1: 'We may collect personal information that you voluntarily provide to us when you contact us for services, including: name, email address, phone number, company name, job title, and project details.',
-            subtitle2: 'Automatically Collected Information', 
-            content2: 'When you visit our website, we may automatically collect certain information about your device, including: IP address, browser type, operating system, referring URLs, and pages viewed.'
-          },
-          howWeUse: {
-            title: 'How We Use Your Information',
-            content: 'We use the collected information to provide and improve our IT consulting services, respond to your inquiries, send you relevant information about our services, maintain the security of our systems, and comply with legal obligations.'
-          },
-          dataProtection: {
-            title: 'Data Protection and Security',
-            content: 'As an IT security consulting firm, we implement industry-standard security measures to protect your personal information. We use encryption, secure servers, access controls, and regular security audits. However, no method of transmission over the internet is 100% secure.'
-          },
-          informationSharing: {
-            title: 'Information Sharing',
-            content: 'We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances: with your consent, to comply with legal obligations, to protect our rights and safety, or with trusted service providers who assist us in operating our business.'
-          },
-          yourRights: {
-            title: 'Your Privacy Rights',
-            content: 'You have the right to access, update, or delete your personal information. You may opt-out of receiving marketing communications from us. For residents of certain jurisdictions, you may have additional rights under applicable privacy laws.'
-          },
-          retention: {
-            title: 'Data Retention',
-            content: 'We retain your personal information only for as long as necessary to fulfill the purposes for which it was collected, comply with legal obligations, resolve disputes, and enforce our agreements.'
-          },
-          changes: {
-            title: 'Changes to This Privacy Policy',
-            content: 'We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.'
-          },
-          contact: {
-            title: 'Contact Us',
-            content: 'If you have any questions about this Privacy Policy or our privacy practices, please contact us at:',
-            email: 'Email: privacy@netsyon.com',
-            phone: 'WhatsApp: +1 (514) 400-4279'
-          }
-        }
-      },
-      termsOfUse: {
-        title: 'Terms of Use',
-        lastUpdated: 'Last Updated: December 2024',
-        sections: {
-          introduction: {
-            title: 'Introduction',
-            content: 'Welcome to NetSyon. These Terms of Use govern your use of our website and IT consulting services. By accessing our website or engaging our services, you agree to be bound by these terms.'
-          },
-          acceptanceOfTerms: {
-            title: 'Acceptance of Terms',
-            content: 'By using our website or services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Use and our Privacy Policy. If you do not agree to these terms, please do not use our services.'
-          },
-          servicesOffered: {
-            title: 'Services Offered',
-            content: 'NetSyon provides IT consulting services including but not limited to: Microsoft Cloud security implementation, data protection solutions, cybersecurity consulting, IT infrastructure design, and related technology services for home users, small-medium businesses, and enterprises.'
-          },
-          userResponsibilities: {
-            title: 'User Responsibilities',
-            content: 'You agree to provide accurate information when engaging our services, maintain the confidentiality of any login credentials, use our services only for lawful purposes, and comply with all applicable laws and regulations.'
-          },
-          intellectualProperty: {
-            title: 'Intellectual Property',
-            content: 'All content on our website, including text, graphics, logos, and software, is the property of NetSyon or our licensors and is protected by copyright and other intellectual property laws. Our consulting methodologies and custom solutions remain our intellectual property.'
-          },
-          serviceTerms: {
-            title: 'Service Terms and Conditions',
-            content: 'Consulting services are provided based on specific agreements with each client. Project scope, timelines, and deliverables will be defined in separate service agreements. We reserve the right to modify or discontinue services with appropriate notice.'
-          },
-          limitationOfLiability: {
-            title: 'Limitation of Liability',
-            content: 'To the maximum extent permitted by law, NetSyon shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of our services. Our total liability shall not exceed the amount paid for the specific service in question.'
-          },
-          confidentiality: {
-            title: 'Confidentiality',
-            content: 'We maintain strict confidentiality regarding client information and projects. Both parties agree to maintain confidentiality of sensitive information shared during the course of our professional relationship.'
-          },
-          termination: {
-            title: 'Termination',
-            content: 'Either party may terminate services with appropriate notice as specified in individual service agreements. Upon termination, both parties remain bound by confidentiality obligations and payment terms for services rendered.'
-          },
-          governingLaw: {
-            title: 'Governing Law',
-            content: 'These Terms of Use are governed by the laws of the Province of Quebec, Canada. Any disputes arising from these terms or our services shall be resolved in the courts of Quebec, Canada.'
-          },
-          changesToTerms: {
-            title: 'Changes to Terms',
-            content: 'We reserve the right to modify these Terms of Use at any time. Changes will be posted on our website with an updated effective date. Continued use of our services after changes constitutes acceptance of the modified terms.'
-          },
-          contact: {
-            title: 'Contact Information',
-            content: 'If you have any questions about these Terms of Use, please contact us at:',
-            email: 'Email: legal@netsyon.com',
-            phone: 'WhatsApp: +1 (514) 400-4279'
-          }
-        }
-      }
-    },
-    fr: {
-      nav: {
-        home: 'Accueil',
-        services: 'Services',
-        about: 'À propos',
-        contact: 'Contact',
-        getStarted: 'Commencer'
-      },
-      hero: {
-        title: 'Votre Partenaire',
-        subtitle: 'IT de Confiance',
-        description: 'Autonomiser les foyers, les entreprises et les grandes organisations avec des solutions IT de pointe. Du support technique personnel à l\'infrastructure de niveau entreprise.',
-        exploreServices: 'Explorer les Services',
-        contactUs: 'Nous Contacter'
-      },
-      services: {
-        title: 'Solutions IT Complètes',
-        subtitle: 'Services technologiques adaptés à chaque besoin - de l\'informatique personnelle à l\'infrastructure d\'entreprise',
-        home: {
-          title: 'Utilisateurs Domestiques & Cybersécurité',
-          description: 'Services complets de sécurité et d\'optimisation IT domestique pour les familles modernes',
-          items: [
-            'Sécurité et Configuration du Réseau Domestique',
-            'Protection des Appareils Intelligents & Sécurité IoT',
-            'Formation de Sensibilisation Cyber Familiale',
-            'Solutions de Confidentialité et Sauvegarde de Données',
-            'Configuration d\'Accès Distant & VPN'
-          ]
-        },
-        smb: {
-          title: 'Petites et Moyennes Entreprises',
-          description: 'Solutions IT évolutives et services de sécurité conçus pour protéger et développer votre entreprise',
-          items: [
-            'Services IT Gérés & Support',
-            'Sécurité et Chiffrement des E-mails Professionnels',
-            'Migration et Gestion Cloud',
-            'Configuration d\'Authentification Multi-Facteurs',
-            'Planification de Continuité d\'Activité'
-          ]
-        },
-        enterprise: {
-          title: 'Sécurité Entreprise',
-          description: 'Implémentations de sécurité avancées et solutions de conformité pour les grandes organisations',
-          items: [
-            'Implémentation de Prévention des Pertes de Données (DLP)',
-            'Conception de Politiques d\'Accès Conditionnel',
-            'Gestion des Identités et Accès (IAM)',
-            'Déploiement de la Suite Microsoft Defender',
-            'Protection et Classification des Informations'
-          ]
-        },
-        learnMore: ''
-      },
-      whyChoose: {
-        title: 'Pourquoi Choisir NetSyon?',
-        subtitle: 'Découvrez la différence de travailler avec un partenaire IT de confiance',
-        fastResponse: {
-          title: 'Réponse Rapide',
-          description: 'Temps de réponse rapides et résolution efficace des problèmes'
-        },
-        expertise: {
-          title: 'Expertise Prouvée',
-          description: 'Des années d\'expérience sur toutes les plateformes technologiques'
-        },
-        costEffective: {
-          title: 'Rentable',
-          description: 'Prix compétitifs avec des tarifs de service transparents'
-        }
-      },
-      about: {
-        title: 'À Propos de NetSyon',
-        description: 'NetSyon est un bureau de conseil spécialisé dans la sécurité Microsoft Cloud, la protection des données et les solutions IT pour les entreprises, PME et utilisateurs domestiques avancés. Avec plus d\'une décennie d\'expérience dans le conseil IT, NetSyon a été le partenaire technologique de confiance pour les particuliers, les petites entreprises et les grandes entreprises de la région.',
-        subtitle: 'Dans un monde de plus en plus numérique, sécuriser les données et l\'infrastructure cloud est essentiel—non seulement pour les entreprises, mais aussi pour les particuliers gérant des maisons connectées. NetSyon aide les clients à construire des environnements numériques sécurisés, fiables et évolutifs en combinant expertise stratégique et mise en œuvre pratique.',
-        expertise: 'Nous fournissons des services de conseil sur mesure à travers l\'écosystème Microsoft, aidant les organisations et les particuliers à prendre le contrôle total de leur posture de cybersécurité, gouvernance cloud et infrastructure IT.',
-        mission: {
-          title: 'Mission',
-          description: 'Simplifier la technologie et autonomiser nos clients avec des solutions IT fiables et innovantes qui favorisent le succès.'
-        },
-        vision: {
-          title: 'Vision',
-          description: 'Être la société de conseil IT leader, reconnue pour un service exceptionnel et des solutions innovantes.'
-        }
-      },
-      contact: {
-        title: 'Prêt à Commencer?',
-        subtitle: 'Contactez-nous aujourd\'hui pour découvrir comment NetSyon peut transformer votre expérience technologique',
-        getInTouch: 'Nous Contacter',
-        phone: 'WhatsApp',
-        email: 'E-mail',
-        address: 'Adresse'
-      },
-      footer: {
-        description: 'Votre partenaire IT de confiance pour des solutions technologiques complètes.',
-        services: 'Services',
-        company: 'Entreprise',
-        support: 'Support',
-        copyright: '© 2024 NetSyon. Tous droits réservés.'
-      },
-      privacyPolicy: {
-        title: 'Politique de Confidentialité',
-        lastUpdated: 'Dernière mise à jour : Décembre 2024',
-        sections: {
-          introduction: {
-            title: 'Introduction',
-            content: 'NetSyon s\'engage à protéger votre vie privée et à assurer la sécurité de vos informations personnelles. Cette Politique de Confidentialité explique comment nous collectons, utilisons, divulguons et protégeons vos informations lorsque vous visitez notre site web ou utilisez nos services de conseil IT.'
-          },
-          informationWeCollect: {
-            title: 'Informations que Nous Collectons',
-            subtitle1: 'Informations Personnelles',
-            content1: 'Nous pouvons collecter des informations personnelles que vous nous fournissez volontairement lorsque vous nous contactez pour des services, notamment : nom, adresse e-mail, numéro de téléphone, nom de l\'entreprise, titre du poste et détails du projet.',
-            subtitle2: 'Informations Collectées Automatiquement',
-            content2: 'Lorsque vous visitez notre site web, nous pouvons automatiquement collecter certaines informations sur votre appareil, notamment : adresse IP, type de navigateur, système d\'exploitation, URLs de référence et pages consultées.'
-          },
-          howWeUse: {
-            title: 'Comment Nous Utilisons Vos Informations',
-            content: 'Nous utilisons les informations collectées pour fournir et améliorer nos services de conseil IT, répondre à vos demandes, vous envoyer des informations pertinentes sur nos services, maintenir la sécurité de nos systèmes et respecter les obligations légales.'
-          },
-          dataProtection: {
-            title: 'Protection et Sécurité des Données',
-            content: 'En tant qu\'entreprise de conseil en sécurité IT, nous mettons en œuvre des mesures de sécurité standard de l\'industrie pour protéger vos informations personnelles. Nous utilisons le chiffrement, des serveurs sécurisés, des contrôles d\'accès et des audits de sécurité réguliers. Cependant, aucune méthode de transmission sur internet n\'est sécurisée à 100%.'
-          },
-          informationSharing: {
-            title: 'Partage d\'Informations',
-            content: 'Nous ne vendons, n\'échangeons ou ne louons pas vos informations personnelles à des tiers. Nous pouvons partager vos informations uniquement dans les circonstances suivantes : avec votre consentement, pour nous conformer aux obligations légales, pour protéger nos droits et notre sécurité, ou avec des prestataires de services de confiance qui nous aident à exploiter notre entreprise.'
-          },
-          yourRights: {
-            title: 'Vos Droits de Confidentialité',
-            content: 'Vous avez le droit d\'accéder, de mettre à jour ou de supprimer vos informations personnelles. Vous pouvez vous désabonner de nos communications marketing. Pour les résidents de certaines juridictions, vous pouvez avoir des droits supplémentaires sous les lois de confidentialité applicables.'
-          },
-          retention: {
-            title: 'Conservation des Données',
-            content: 'Nous conservons vos informations personnelles seulement aussi longtemps que nécessaire pour accomplir les fins pour lesquelles elles ont été collectées, respecter les obligations légales, résoudre les disputes et faire respecter nos accords.'
-          },
-          changes: {
-            title: 'Modifications de Cette Politique de Confidentialité',
-            content: 'Nous pouvons mettre à jour cette Politique de Confidentialité de temps à autre. Nous vous notifierons de tout changement en publiant la nouvelle Politique de Confidentialité sur cette page et en mettant à jour la date de "Dernière mise à jour".'
-          },
-          contact: {
-            title: 'Nous Contacter',
-            content: 'Si vous avez des questions sur cette Politique de Confidentialité ou nos pratiques de confidentialité, veuillez nous contacter à :',
-            email: 'E-mail : privacy@netsyon.com',
-            phone: 'WhatsApp : +1 (514) 400-4279'
-          }
-        }
-      },
-      termsOfUse: {
-        title: 'Conditions d\'Utilisation',
-        lastUpdated: 'Dernière mise à jour : Décembre 2024',
-        sections: {
-          introduction: {
-            title: 'Introduction',
-            content: 'Bienvenue chez NetSyon. Ces Conditions d\'Utilisation régissent votre utilisation de notre site web et de nos services de conseil IT. En accédant à notre site web ou en utilisant nos services, vous acceptez d\'être lié par ces conditions.'
-          },
-          acceptanceOfTerms: {
-            title: 'Acceptation des Conditions',
-            content: 'En utilisant notre site web ou nos services, vous reconnaissez avoir lu, compris et accepté d\'être lié par ces Conditions d\'Utilisation et notre Politique de Confidentialité. Si vous n\'acceptez pas ces conditions, veuillez ne pas utiliser nos services.'
-          },
-          servicesOffered: {
-            title: 'Services Offerts',
-            content: 'NetSyon fournit des services de conseil IT incluant mais sans s\'y limiter : implémentation de sécurité Microsoft Cloud, solutions de protection des données, conseil en cybersécurité, conception d\'infrastructure IT, et services technologiques connexes pour utilisateurs domestiques, petites-moyennes entreprises, et entreprises.'
-          },
-          userResponsibilities: {
-            title: 'Responsabilités de l\'Utilisateur',
-            content: 'Vous acceptez de fournir des informations exactes lors de l\'utilisation de nos services, de maintenir la confidentialité de tous identifiants de connexion, d\'utiliser nos services uniquement à des fins légales, et de respecter toutes les lois et réglementations applicables.'
-          },
-          intellectualProperty: {
-            title: 'Propriété Intellectuelle',
-            content: 'Tout le contenu de notre site web, y compris le texte, les graphiques, les logos et les logiciels, est la propriété de NetSyon ou de nos concédants de licence et est protégé par le droit d\'auteur et autres lois sur la propriété intellectuelle. Nos méthodologies de conseil et solutions personnalisées restent notre propriété intellectuelle.'
-          },
-          serviceTerms: {
-            title: 'Conditions de Service',
-            content: 'Les services de conseil sont fournis sur la base d\'accords spécifiques avec chaque client. La portée du projet, les délais et les livrables seront définis dans des accords de service séparés. Nous nous réservons le droit de modifier ou d\'interrompre les services avec un préavis approprié.'
-          },
-          limitationOfLiability: {
-            title: 'Limitation de Responsabilité',
-            content: 'Dans la mesure maximale permise par la loi, NetSyon ne sera pas responsable des dommages indirects, accessoires, spéciaux ou consécutifs découlant de l\'utilisation de nos services. Notre responsabilité totale ne dépassera pas le montant payé pour le service spécifique en question.'
-          },
-          confidentiality: {
-            title: 'Confidentialité',
-            content: 'Nous maintenons une confidentialité stricte concernant les informations et projets clients. Les deux parties acceptent de maintenir la confidentialité des informations sensibles partagées au cours de notre relation professionnelle.'
-          },
-          termination: {
-            title: 'Résiliation',
-            content: 'Chaque partie peut résilier les services avec un préavis approprié tel que spécifié dans les accords de service individuels. Lors de la résiliation, les deux parties restent liées par les obligations de confidentialité et les conditions de paiement pour les services rendus.'
-          },
-          governingLaw: {
-            title: 'Loi Applicable',
-            content: 'Ces Conditions d\'Utilisation sont régies par les lois de la Province de Québec, Canada. Tout litige découlant de ces conditions ou de nos services sera résolu devant les tribunaux du Québec, Canada.'
-          },
-          changesToTerms: {
-            title: 'Modifications des Conditions',
-            content: 'Nous nous réservons le droit de modifier ces Conditions d\'Utilisation à tout moment. Les modifications seront publiées sur notre site web avec une date d\'entrée en vigueur mise à jour. L\'utilisation continue de nos services après les modifications constitue l\'acceptation des conditions modifiées.'
-          },
-          contact: {
-            title: 'Informations de Contact',
-            content: 'Si vous avez des questions sur ces Conditions d\'Utilisation, veuillez nous contacter à :',
-            email: 'E-mail : legal@netsyon.com',
-            phone: 'WhatsApp : +1 (514) 400-4279'
-          }
-        }
-      }
-    }
-  };
-
-  const t = translations[language];
-
-  const PrivacyPolicyModal = () => (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl">
-        <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex justify-between items-center">
-          <h2 className="text-3xl font-bold text-slate-800">{t.privacyPolicy.title}</h2>
-          <button 
-            onClick={() => setShowPrivacyPolicy(false)}
-            className="text-slate-400 hover:text-slate-600 transition-colors"
-          >
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-        
-        <div className="p-6 space-y-8">
-          <p className="text-sm text-slate-500">{t.privacyPolicy.lastUpdated}</p>
-          
-          {/* Introduction */}
-          <section>
-            <h3 className="text-xl font-semibold text-slate-800 mb-3">{t.privacyPolicy.sections.introduction.title}</h3>
-            <p className="text-slate-600 leading-relaxed">{t.privacyPolicy.sections.introduction.content}</p>
-          </section>
-
-          {/* Information We Collect */}
-          <section>
-            <h3 className="text-xl font-semibold text-slate-800 mb-3">{t.privacyPolicy.sections.informationWeCollect.title}</h3>
-            <div className="space-y-4">
-              <div>
-                <h4 className="text-lg font-medium text-slate-700 mb-2">{t.privacyPolicy.sections.informationWeCollect.subtitle1}</h4>
-                <p className="text-slate-600 leading-relaxed">{t.privacyPolicy.sections.informationWeCollect.content1}</p>
-              </div>
-              <div>
-                <h4 className="text-lg font-medium text-slate-700 mb-2">{t.privacyPolicy.sections.informationWeCollect.subtitle2}</h4>
-                <p className="text-slate-600 leading-relaxed">{t.privacyPolicy.sections.informationWeCollect.content2}</p>
-              </div>
-            </div>
-          </section>
-
-          {/* How We Use Your Information */}
-          <section>
-            <h3 className="text-xl font-semibold text-slate-800 mb-3">{t.privacyPolicy.sections.howWeUse.title}</h3>
-            <p className="text-slate-600 leading-relaxed">{t.privacyPolicy.sections.howWeUse.content}</p>
-          </section>
-
-          {/* Data Protection */}
-          <section>
-            <h3 className="text-xl font-semibold text-slate-800 mb-3">{t.privacyPolicy.sections.dataProtection.title}</h3>
-            <p className="text-slate-600 leading-relaxed">{t.privacyPolicy.sections.dataProtection.content}</p>
-          </section>
-
-          {/* Information Sharing */}
-          <section>
-            <h3 className="text-xl font-semibold text-slate-800 mb-3">{t.privacyPolicy.sections.informationSharing.title}</h3>
-            <p className="text-slate-600 leading-relaxed">{t.privacyPolicy.sections.informationSharing.content}</p>
-          </section>
-
-          {/* Your Rights */}
-          <section>
-            <h3 className="text-xl font-semibold text-slate-800 mb-3">{t.privacyPolicy.sections.yourRights.title}</h3>
-            <p className="text-slate-600 leading-relaxed">{t.privacyPolicy.sections.yourRights.content}</p>
-          </section>
-
-          {/* Data Retention */}
-          <section>
-            <h3 className="text-xl font-semibold text-slate-800 mb-3">{t.privacyPolicy.sections.retention.title}</h3>
-            <p className="text-slate-600 leading-relaxed">{t.privacyPolicy.sections.retention.content}</p>
-          </section>
-
-          {/* Changes */}
-          <section>
-            <h3 className="text-xl font-semibold text-slate-800 mb-3">{t.privacyPolicy.sections.changes.title}</h3>
-            <p className="text-slate-600 leading-relaxed">{t.privacyPolicy.sections.changes.content}</p>
-          </section>
-
-          {/* Contact */}
-          <section>
-            <h3 className="text-xl font-semibold text-slate-800 mb-3">{t.privacyPolicy.sections.contact.title}</h3>
-            <p className="text-slate-600 leading-relaxed mb-4">{t.privacyPolicy.sections.contact.content}</p>
-            <div className="bg-slate-50 p-4 rounded-lg space-y-2">
-              <p className="text-slate-700 font-medium">{t.privacyPolicy.sections.contact.email}</p>
-              <p className="text-slate-700 font-medium">{t.privacyPolicy.sections.contact.phone}</p>
-            </div>
-          </section>
-        </div>
-      </div>
-    </div>
-  );
-
-  const TermsOfUseModal = () => (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl">
-        <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex justify-between items-center">
-          <h2 className="text-3xl font-bold text-slate-800">{t.termsOfUse.title}</h2>
-          <button 
-            onClick={() => setShowTermsOfUse(false)}
-            className="text-slate-400 hover:text-slate-600 transition-colors"
-          >
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-        
-        <div className="p-6 space-y-8">
-          <p className="text-sm text-slate-500">{t.termsOfUse.lastUpdated}</p>
-          
-          {/* All terms sections */}
-          {Object.entries(t.termsOfUse.sections).filter(([key]) => key !== 'contact').map(([key, section]) => (
-            <section key={key}>
-              <h3 className="text-xl font-semibold text-slate-800 mb-3">{section.title}</h3>
-              <p className="text-slate-600 leading-relaxed">{section.content}</p>
-            </section>
-          ))}
-
-          {/* Contact */}
-          <section>
-            <h3 className="text-xl font-semibold text-slate-800 mb-3">{t.termsOfUse.sections.contact.title}</h3>
-            <p className="text-slate-600 leading-relaxed mb-4">{t.termsOfUse.sections.contact.content}</p>
-            <div className="bg-slate-50 p-4 rounded-lg space-y-2">
-              <p className="text-slate-700 font-medium">{t.termsOfUse.sections.contact.email}</p>
-              <p className="text-slate-700 font-medium">{t.termsOfUse.sections.contact.phone}</p>
-            </div>
-          </section>
-        </div>
-      </div>
-    </div>
-  );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      {showPrivacyPolicy && <PrivacyPolicyModal />}
-      {showTermsOfUse && <TermsOfUseModal />}
-      
+    <div className="min-h-screen bg-slate-900 text-white">
       {/* Navigation */}
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
-      }`}>
+      <nav className="fixed top-0 w-full bg-slate-900/95 backdrop-blur-md z-50 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <img 
-                  src={`${process.env.PUBLIC_URL}/logo-netsyon.png`} 
-                  alt="NetSyon Logo" 
-                  className="h-12 w-auto"
-                />
+                <h1 className="text-2xl font-bold text-blue-400">NetSys</h1>
               </div>
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
-                <button onClick={() => scrollToSection('home')} className={`${isScrolled ? 'text-slate-700 hover:text-blue-600' : 'text-white hover:text-blue-300'} transition-colors font-medium`}>{t.nav.home}</button>
-                <button onClick={() => scrollToSection('services')} className={`${isScrolled ? 'text-slate-700 hover:text-blue-600' : 'text-white hover:text-blue-300'} transition-colors font-medium`}>{t.nav.services}</button>
-                <button onClick={() => scrollToSection('about')} className={`${isScrolled ? 'text-slate-700 hover:text-blue-600' : 'text-white hover:text-blue-300'} transition-colors font-medium`}>{t.nav.about}</button>
-                <button onClick={() => scrollToSection('contact')} className={`${isScrolled ? 'text-slate-700 hover:text-blue-600' : 'text-white hover:text-blue-300'} transition-colors font-medium`}>{t.nav.contact}</button>
+                {['Home', 'Services', 'About', 'Contact'].map((item) => (
+                  <button
+                    key={item}
+                    onClick={() => scrollToSection(item.toLowerCase() === 'home' ? 'hero' : item.toLowerCase())}
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                      activeSection === (item.toLowerCase() === 'home' ? 'hero' : item.toLowerCase())
+                        ? 'text-blue-400 bg-blue-400/10'
+                        : 'text-slate-300 hover:text-blue-400 hover:bg-blue-400/5'
+                    }`}
+                  >
+                    {item}
+                  </button>
+                ))}
               </div>
             </div>
-            <div className="hidden md:flex items-center space-x-4">
-              <button 
-                onClick={toggleLanguage}
-                className={`flex items-center space-x-2 ${isScrolled ? 'text-slate-700 hover:text-blue-600' : 'text-white hover:text-blue-300'} transition-colors font-medium`}
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-                </svg>
-                <span>{language === 'en' ? 'FR' : 'EN'}</span>
-              </button>
-              <button 
-                onClick={() => scrollToSection('contact')}
-                className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg transform hover:scale-105"
-              >
-                {t.nav.getStarted}
-              </button>
-            </div>
-
-            {/* Mobile menu button */}
             <div className="md:hidden">
               <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className={`${isScrolled ? 'text-slate-700' : 'text-white'} p-2`}
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="inline-flex items-center justify-center p-2 rounded-md text-slate-300 hover:text-blue-400 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  {isMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  )}
                 </svg>
               </button>
             </div>
           </div>
-          
-          {/* Mobile menu */}
-          {mobileMenuOpen && (
-            <div className="md:hidden">
-              <div className="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-md shadow-lg rounded-lg mt-2">
-                <button 
-                  onClick={() => {scrollToSection('home'); setMobileMenuOpen(false);}}
-                  className="block w-full text-left px-3 py-2 text-slate-700 hover:text-blue-600 font-medium"
-                >
-                  {t.nav.home}
-                </button>
-                <button 
-                  onClick={() => {scrollToSection('services'); setMobileMenuOpen(false);}}
-                  className="block w-full text-left px-3 py-2 text-slate-700 hover:text-blue-600 font-medium"
-                >
-                  {t.nav.services}
-                </button>
-                <button 
-                  onClick={() => {scrollToSection('about'); setMobileMenuOpen(false);}}
-                  className="block w-full text-left px-3 py-2 text-slate-700 hover:text-blue-600 font-medium"
-                >
-                  {t.nav.about}
-                </button>
-                <button 
-                  onClick={() => {scrollToSection('contact'); setMobileMenuOpen(false);}}
-                  className="block w-full text-left px-3 py-2 text-slate-700 hover:text-blue-600 font-medium"
-                >
-                  {t.nav.contact}
-                </button>
-                <button 
-                  onClick={() => {toggleLanguage(); setMobileMenuOpen(false);}}
-                  className="flex items-center space-x-2 w-full text-left px-3 py-2 text-slate-700 hover:text-blue-600 font-medium"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-                  </svg>
-                  <span>{language === 'en' ? 'FR' : 'EN'}</span>
-                </button>
-                <button 
-                  onClick={() => {scrollToSection('contact'); setMobileMenuOpen(false);}}
-                  className="block w-full text-left px-3 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors mt-2"
-                >
-                  {t.nav.getStarted}
-                </button>
-              </div>
-            </div>
-          )}
         </div>
+        {isMenuOpen && (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-slate-800/95 backdrop-blur-md">
+              {['Home', 'Services', 'About', 'Contact'].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => scrollToSection(item.toLowerCase() === 'home' ? 'hero' : item.toLowerCase())}
+                  className="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-blue-400 hover:bg-slate-700 w-full text-left"
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 to-slate-900/80 z-10"></div>
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('https://images.pexels.com/photos/5475750/pexels-photo-5475750.jpeg')`,
-            filter: 'brightness(0.4)'
-          }}
-        ></div>
-        
-        <div className="relative z-20 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-          <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            {t.hero.title}
-            <span className="block text-blue-400">{t.hero.subtitle}</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-            {t.hero.description}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button 
-              onClick={() => scrollToSection('services')}
-              className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
-            >
-              {t.hero.exploreServices}
-            </button>
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="bg-white/20 backdrop-blur-sm text-white border-2 border-white/30 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/30 transition-all"
-            >
-              {t.contact.getInTouch}
-            </button>
+      <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1573166364366-3f4f8b1857ea')] bg-cover bg-center opacity-10"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="space-y-8 animate-fadeInUp">
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+              <span className="text-white">Expert IT Solutions</span>
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+                For Every Need
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+              From home networks to enterprise infrastructure, NetSys delivers comprehensive IT consulting 
+              and cybersecurity solutions tailored to your unique requirements.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4 pt-8">
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg shadow-lg hover:from-blue-600 hover:to-cyan-600 transform hover:scale-105 transition-all duration-300"
+              >
+                Get Free Consultation
+              </button>
+              <button
+                onClick={() => scrollToSection('services')}
+                className="px-8 py-4 border-2 border-blue-400 text-blue-400 font-semibold rounded-lg hover:bg-blue-400 hover:text-white transition-all duration-300"
+              >
+                View Our Services
+              </button>
+            </div>
           </div>
+        </div>
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-white">
+      <section id="services" className="py-20 bg-slate-800/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
-              {t.services.title}
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              {t.services.subtitle}
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Services</h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Comprehensive IT solutions designed for home users, small businesses, and enterprise organizations
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Home Users */}
-            <div className="group bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-blue-100 flex flex-col h-full">
-              <div className="bg-blue-600 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-700 transition-colors">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 21l4-4 4 4" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-slate-800 mb-4">{t.services.home.title}</h3>
-              <p className="text-slate-600 mb-6">{t.services.home.description}</p>
-              <ul className="text-slate-600 space-y-2 mb-8 flex-grow">
-                {t.services.home.items.map((item, index) => (
-                  <li key={index} className="flex items-center">
-                    <svg className="w-5 h-5 text-blue-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+            <div className="group relative bg-slate-900/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 hover:border-blue-400/50 transition-all duration-500 hover:transform hover:scale-105">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-cyan-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative z-10">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mb-6">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4">Home Users</h3>
+                <p className="text-slate-300 mb-6">
+                  Personal technology support and cybersecurity solutions for families and individuals.
+                </p>
+                <ul className="space-y-3 text-slate-300">
+                  <li className="flex items-start">
+                    <svg className="w-5 h-5 text-blue-400 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    {item}
+                    Home network setup & security
                   </li>
-                ))}
-              </ul>
-              <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors mt-auto">
-                {t.services.learnMore}
-              </button>
+                  <li className="flex items-start">
+                    <svg className="w-5 h-5 text-blue-400 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    Smart device protection
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="w-5 h-5 text-blue-400 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    Data backup & recovery
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="w-5 h-5 text-blue-400 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    Cyber awareness training
+                  </li>
+                </ul>
+              </div>
             </div>
 
-            {/* SMB */}
-            <div className="group bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-green-100 flex flex-col h-full">
-              <div className="bg-green-600 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-700 transition-colors">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-slate-800 mb-4">{t.services.smb.title}</h3>
-              <p className="text-slate-600 mb-6">{t.services.smb.description}</p>
-              <ul className="text-slate-600 space-y-2 mb-8 flex-grow">
-                {t.services.smb.items.map((item, index) => (
-                  <li key={index} className="flex items-center">
-                    <svg className="w-5 h-5 text-green-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+            {/* Small & Medium Business */}
+            <div className="group relative bg-slate-900/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 hover:border-blue-400/50 transition-all duration-500 hover:transform hover:scale-105">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-cyan-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative z-10">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mb-6">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4">Small & Medium Business</h3>
+                <p className="text-slate-300 mb-6">
+                  Scalable IT infrastructure and managed services to grow your business efficiently.
+                </p>
+                <ul className="space-y-3 text-slate-300">
+                  <li className="flex items-start">
+                    <svg className="w-5 h-5 text-blue-400 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    {item}
+                    Managed IT services
                   </li>
-                ))}
-              </ul>
-              <button className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors mt-auto">
-                {t.services.learnMore}
-              </button>
+                  <li className="flex items-start">
+                    <svg className="w-5 h-5 text-blue-400 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    Business continuity planning
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="w-5 h-5 text-blue-400 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    Network security solutions
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="w-5 h-5 text-blue-400 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    24/7 technical support
+                  </li>
+                </ul>
+              </div>
             </div>
 
             {/* Enterprise */}
-            <div className="group bg-gradient-to-br from-purple-50 to-indigo-50 p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-purple-100 flex flex-col h-full">
-              <div className="bg-purple-600 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-700 transition-colors">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-slate-800 mb-4">{t.services.enterprise.title}</h3>
-              <p className="text-slate-600 mb-6">{t.services.enterprise.description}</p>
-              <ul className="text-slate-600 space-y-2 mb-8 flex-grow">
-                {t.services.enterprise.items.map((item, index) => (
-                  <li key={index} className="flex items-center">
-                    <svg className="w-5 h-5 text-purple-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+            <div className="group relative bg-slate-900/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 hover:border-blue-400/50 transition-all duration-500 hover:transform hover:scale-105">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-cyan-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative z-10">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mb-6">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4">Enterprise</h3>
+                <p className="text-slate-300 mb-6">
+                  Advanced cybersecurity and scalable infrastructure solutions for large organizations.
+                </p>
+                <ul className="space-y-3 text-slate-300">
+                  <li className="flex items-start">
+                    <svg className="w-5 h-5 text-blue-400 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    {item}
+                    Enterprise security architecture
                   </li>
-                ))}
-              </ul>
-              <button className="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors mt-auto">
-                {t.services.learnMore}
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* All Services Section */}
-      <section id="all-services" className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
-              {t.allServices.title}
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
-              {t.allServices.subtitle}
-            </p>
-            
-            {/* Profile Section */}
-            <div className="bg-white p-6 rounded-2xl shadow-md max-w-4xl mx-auto mb-12">
-              <h3 className="text-xl font-bold text-slate-800 mb-2">{t.allServices.profile.title}</h3>
-              <p className="text-blue-600 font-semibold">{t.allServices.profile.company}</p>
-              <p className="text-slate-600">{t.allServices.profile.period}</p>
-            </div>
-          </div>
-
-          {/* Enterprise Security Projects */}
-          <div className="mb-16">
-            <h3 className="text-3xl font-bold text-slate-800 mb-8 text-center">{t.allServices.enterprise.title}</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              {t.allServices.enterprise.services.map((service, index) => (
-                <div key={index} className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300">
-                  <h4 className="text-lg font-semibold text-slate-800 mb-3">• {service.name}</h4>
-                  <p className="text-slate-600 leading-relaxed">{service.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Home IT Users & Cybersecurity Services */}
-          <div>
-            <h3 className="text-3xl font-bold text-slate-800 mb-8 text-center">{t.allServices.home.title}</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {t.allServices.home.services.map((service, index) => (
-                <div key={index} className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300">
-                  <h4 className="text-lg font-semibold text-slate-800 mb-3">{service.name}</h4>
-                  <p className="text-slate-600 leading-relaxed">{service.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose NetSyon */}
-      <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
-              {t.whyChoose.title}
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              {t.whyChoose.subtitle}
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="text-center group">
-              <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 group-hover:bg-blue-50">
-                <div className="bg-blue-600 w-16 h-16 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:bg-blue-700 transition-colors">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-slate-800 mb-2">{t.whyChoose.fastResponse.title}</h3>
-                <p className="text-slate-600">{t.whyChoose.fastResponse.description}</p>
-              </div>
-            </div>
-
-            <div className="text-center group">
-              <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 group-hover:bg-green-50">
-                <div className="bg-green-600 w-16 h-16 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:bg-green-700 transition-colors">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-slate-800 mb-2">{t.whyChoose.expertise.title}</h3>
-                <p className="text-slate-600">{t.whyChoose.expertise.description}</p>
-              </div>
-            </div>
-
-            <div className="text-center group">
-              <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 group-hover:bg-purple-50">
-                <div className="bg-purple-600 w-16 h-16 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:bg-purple-700 transition-colors">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-slate-800 mb-2">{t.whyChoose.costEffective.title}</h3>
-                <p className="text-slate-600">{t.whyChoose.costEffective.description}</p>
+                  <li className="flex items-start">
+                    <svg className="w-5 h-5 text-blue-400 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    Compliance & risk management
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="w-5 h-5 text-blue-400 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    Cloud infrastructure design
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="w-5 h-5 text-blue-400 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    Strategic IT consulting
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -983,161 +273,255 @@ const App = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-white">
+      <section id="about" className="py-20 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">
-                {t.about.title}
-              </h2>
-              <p className="text-xl text-slate-600 mb-6 leading-relaxed">
-                {t.about.description}
-              </p>
-              <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                {t.about.subtitle}
-              </p>
-              <p className="text-lg text-slate-600 mb-8 leading-relaxed font-medium">
-                {t.about.expertise}
-              </p>
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="bg-blue-100 p-2 rounded-lg mr-4">
-                    <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-slate-800 mb-2">{t.about.mission.title}</h3>
-                    <p className="text-slate-600">{t.about.mission.description}</p>
-                  </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <div>
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">About NetSys</h2>
+                <p className="text-xl text-slate-300 leading-relaxed mb-6">
+                  With over a decade of experience in IT consulting and cybersecurity, NetSys delivers 
+                  comprehensive technology solutions that protect, optimize, and scale your digital infrastructure.
+                </p>
+                <p className="text-lg text-slate-300 leading-relaxed">
+                  We understand that every client has unique needs. Whether you're a family looking to secure 
+                  your home network, a growing business requiring reliable IT support, or an enterprise needing 
+                  advanced cybersecurity solutions, we tailor our approach to deliver maximum value.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700">
+                  <div className="text-3xl font-bold text-blue-400 mb-2">12+</div>
+                  <div className="text-slate-300">Years Experience</div>
                 </div>
-                <div className="flex items-start">
-                  <div className="bg-green-100 p-2 rounded-lg mr-4">
-                    <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-slate-800 mb-2">{t.about.vision.title}</h3>
-                    <p className="text-slate-600">{t.about.vision.description}</p>
-                  </div>
+                <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700">
+                  <div className="text-3xl font-bold text-blue-400 mb-2">500+</div>
+                  <div className="text-slate-300">Projects Completed</div>
+                </div>
+                <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700">
+                  <div className="text-3xl font-bold text-blue-400 mb-2">24/7</div>
+                  <div className="text-slate-300">Support Available</div>
+                </div>
+                <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700">
+                  <div className="text-3xl font-bold text-blue-400 mb-2">100%</div>
+                  <div className="text-slate-300">Client Satisfaction</div>
                 </div>
               </div>
             </div>
-            <div className="lg:pl-8">
-              <div className="relative">
+            <div className="relative">
+              <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
                 <img 
-                  src="https://images.pexels.com/photos/3182781/pexels-photo-3182781.jpeg" 
-                  alt="NetSyon Team"
-                  className="w-full h-96 object-cover rounded-2xl shadow-xl"
+                  src="https://images.unsplash.com/photo-1565688527174-775059ac429c" 
+                  alt="Professional IT Consultation" 
+                  className="w-full h-96 object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-transparent rounded-2xl"></div>
               </div>
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-cyan-600/20 rounded-2xl transform translate-x-4 translate-y-4 -z-10"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose NetSys */}
+      <section className="py-20 bg-slate-800/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Why Choose NetSys?</h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              We combine deep technical expertise with personalized service to deliver solutions that work
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="text-center group">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-4">Proven Expertise</h3>
+              <p className="text-slate-300">
+                Microsoft certified professionals with extensive experience in enterprise security solutions
+              </p>
+            </div>
+            
+            <div className="text-center group">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-4">Personalized Service</h3>
+              <p className="text-slate-300">
+                Tailored solutions that fit your specific needs, budget, and timeline
+              </p>
+            </div>
+            
+            <div className="text-center group">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-4">Rapid Response</h3>
+              <p className="text-slate-300">
+                Quick turnaround times with 24/7 support for critical issues
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gradient-to-br from-blue-900 to-slate-900 text-white">
+      <section id="contact" className="py-20 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              {t.contact.title}
-            </h2>
-            <p className="text-xl text-blue-200 max-w-3xl mx-auto">
-              {t.contact.subtitle}
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Get In Touch</h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Ready to secure and optimize your IT infrastructure? Let's discuss your needs.
             </p>
           </div>
-
-          <div className="flex justify-center">
-            <div className="max-w-2xl w-full">
-              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20">
-                <h3 className="text-2xl font-bold mb-6 text-center">{t.contact.getInTouch}</h3>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="flex items-center justify-center">
-                    <div className="bg-blue-600 p-3 rounded-lg mr-4">
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                    </div>
-                    <div className="text-center">
-                      <h4 className="font-semibold">{t.contact.phone}</h4>
-                      <a 
-                        href="http://wa.me/15144004279" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-blue-200 hover:text-white transition-colors"
-                      >
-                        +1 (514) 400-4279
-                      </a>
-                    </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="space-y-8">
+              <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700">
+                <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <svg className="w-6 h-6 text-blue-400 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-slate-300">info@netsys.com</span>
                   </div>
-                  <div className="flex items-center justify-center">
-                    <div className="bg-blue-600 p-3 rounded-lg mr-4">
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                    </div>
-                    <div className="text-center">
-                      <h4 className="font-semibold">{t.contact.email}</h4>
-                      <p className="text-blue-200">info@netsyon.com</p>
-                    </div>
+                  <div className="flex items-center">
+                    <svg className="w-6 h-6 text-blue-400 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    <span className="text-slate-300">+1 (555) 123-4567</span>
+                  </div>
+                  <div className="flex items-center">
+                    <svg className="w-6 h-6 text-blue-400 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-slate-300">24/7 Emergency Support</span>
                   </div>
                 </div>
               </div>
+              
+              <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700">
+                <h3 className="text-2xl font-bold text-white mb-6">Business Hours</h3>
+                <div className="space-y-2 text-slate-300">
+                  <div className="flex justify-between">
+                    <span>Monday - Friday</span>
+                    <span>8:00 AM - 6:00 PM</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Saturday</span>
+                    <span>9:00 AM - 4:00 PM</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Sunday</span>
+                    <span>Emergency Support Only</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700">
+              <h3 className="text-2xl font-bold text-white mb-6">Request Consultation</h3>
+              <form className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    className="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                    placeholder="Your full name"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    className="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                    placeholder="your@email.com"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="service" className="block text-sm font-medium text-slate-300 mb-2">
+                    Service Type
+                  </label>
+                  <select
+                    id="service"
+                    className="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                  >
+                    <option value="">Select a service</option>
+                    <option value="home">Home User Support</option>
+                    <option value="smb">Small & Medium Business</option>
+                    <option value="enterprise">Enterprise Solutions</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    rows={4}
+                    className="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                    placeholder="Tell us about your IT needs..."
+                  ></textarea>
+                </div>
+                
+                <button
+                  type="submit"
+                  className="w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg shadow-lg hover:from-blue-600 hover:to-cyan-600 transform hover:scale-105 transition-all duration-300"
+                >
+                  Send Message
+                </button>
+              </form>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-900 text-white py-12">
+      <footer className="bg-slate-900 border-t border-slate-800 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <img 
-                src={`${process.env.PUBLIC_URL}/logo-netsyon.png`} 
-                alt="NetSyon Logo" 
-                className="h-12 w-auto"
-              />
-              <p className="text-slate-400 mb-4">
-                {t.footer.description}
-              </p>
-              <div className="flex space-x-4">
-                <a href="https://www.linkedin.com/company/netsyon" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                  </svg>
-                </a>
-              </div>
+          <div className="text-center">
+            <h3 className="text-2xl font-bold text-blue-400 mb-4">NetSys</h3>
+            <p className="text-slate-300 mb-8">
+              Professional IT consulting and cybersecurity solutions for every need
+            </p>
+            <div className="flex justify-center space-x-6 mb-8">
+              <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors">
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                </svg>
+              </a>
+              <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors">
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
             </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">{t.footer.services}</h4>
-              <ul className="space-y-2 text-slate-400">
-                <li><button onClick={() => scrollToSection('services')} className="hover:text-white transition-colors">{language === 'en' ? 'Home IT Support' : 'Support IT Domestique'}</button></li>
-                <li><button onClick={() => scrollToSection('services')} className="hover:text-white transition-colors">{language === 'en' ? 'Business Solutions' : 'Solutions Entreprise'}</button></li>
-                <li><button onClick={() => scrollToSection('services')} className="hover:text-white transition-colors">{language === 'en' ? 'Enterprise Infrastructure' : 'Infrastructure Entreprise'}</button></li>
-                <li><button onClick={() => scrollToSection('services')} className="hover:text-white transition-colors">{language === 'en' ? 'Cloud Services' : 'Services Cloud'}</button></li>
-              </ul>
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-400">
+              <a href="#" className="hover:text-blue-400 transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-blue-400 transition-colors">Terms of Service</a>
+              <a href="#" className="hover:text-blue-400 transition-colors">Security</a>
+              <a href="#" className="hover:text-blue-400 transition-colors">Support</a>
             </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">{t.footer.company}</h4>
-              <ul className="space-y-2 text-slate-400">
-                <li><button onClick={() => scrollToSection('about')} className="hover:text-white transition-colors">{language === 'en' ? 'About Us' : 'À Propos'}</button></li>
-                <li><button onClick={() => scrollToSection('contact')} className="hover:text-white transition-colors">{t.nav.contact}</button></li>
-              </ul>
+            <div className="mt-8 pt-8 border-t border-slate-800 text-slate-400 text-sm">
+              © 2025 NetSys IT Consulting. All rights reserved.
             </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">{t.footer.support}</h4>
-              <ul className="space-y-2 text-slate-400">
-                <li><button onClick={() => setShowPrivacyPolicy(true)} className="hover:text-white transition-colors text-left">{language === 'en' ? 'Privacy Policy' : 'Politique de Confidentialité'}</button></li>
-                <li><button onClick={() => setShowTermsOfUse(true)} className="hover:text-white transition-colors text-left">{language === 'en' ? 'Terms of Service' : 'Conditions d\'Utilisation'}</button></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-slate-700 mt-8 pt-8 text-center text-slate-400">
-            <p>{t.footer.copyright}</p>
           </div>
         </div>
       </footer>
