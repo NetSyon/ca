@@ -825,9 +825,10 @@ const App = () => {
                 <span className="text-green-400 text-xs">{t('secure')}</span>
                 <button
                   onClick={toggleLanguage}
-                  className="ml-4 px-2 py-1 bg-slate-800/50 hover:bg-slate-700/50 rounded border border-slate-700/50 text-slate-300 hover:text-white transition-all duration-300 text-xs"
+                  className="ml-4 px-2 py-1 bg-slate-800/50 hover:bg-slate-700/50 rounded border border-slate-700/50 text-slate-300 hover:text-white transition-all duration-300 text-xs flex items-center space-x-1"
                 >
-                  {language === 'en' ? 'FR' : 'EN'}
+                  <span className="text-sm">🌐</span>
+                  <span>{language === 'en' ? 'FR' : 'EN'}</span>
                 </button>
               </div>
               {[
