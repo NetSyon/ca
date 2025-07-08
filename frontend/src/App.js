@@ -701,17 +701,22 @@ const App = () => {
             
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
-                {['Home', 'Services', 'About', 'Contact'].map((item) => (
+                {[
+                  { key: 'home', section: 'hero' },
+                  { key: 'services', section: 'services' },
+                  { key: 'about', section: 'about' },
+                  { key: 'contact', section: 'contact' }
+                ].map((item) => (
                   <button
-                    key={item}
-                    onClick={() => scrollToSection(item.toLowerCase() === 'home' ? 'hero' : item.toLowerCase())}
+                    key={item.key}
+                    onClick={() => scrollToSection(item.section)}
                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                      activeSection === (item.toLowerCase() === 'home' ? 'hero' : item.toLowerCase())
+                      activeSection === item.section
                         ? 'text-blue-400 bg-blue-400/10 border border-blue-400/30'
                         : 'text-slate-300 hover:text-blue-400 hover:bg-blue-400/5'
                     }`}
                   >
-                    {item}
+                    {t(item.key)}
                   </button>
                 ))}
               </div>
