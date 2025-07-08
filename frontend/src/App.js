@@ -950,7 +950,6 @@ const App = () => {
             <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-400 mb-8">
               <button onClick={() => openModal('privacy')} className="hover:text-blue-400 transition-all duration-300">Privacy Policy</button>
               <button onClick={() => openModal('terms')} className="hover:text-blue-400 transition-all duration-300">Terms of Service</button>
-              <button onClick={() => openModal('security')} className="hover:text-blue-400 transition-all duration-300">Security</button>
               <button onClick={() => openModal('support')} className="hover:text-blue-400 transition-all duration-300">Support</button>
             </div>
             <div className="mt-8 pt-8 border-t border-slate-700/50 text-slate-400 text-sm">
