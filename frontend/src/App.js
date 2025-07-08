@@ -791,15 +791,15 @@ const App = () => {
         <div className="absolute top-24 right-8 flex flex-col space-y-4">
           <div className="flex items-center space-x-2 text-xs text-slate-400">
             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-            <span>System Online</span>
+            <span>{t('systemOnline')}</span>
           </div>
           <div className="flex items-center space-x-2 text-xs text-slate-400">
             <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
-            <span>Security Active</span>
+            <span>{t('securityActive')}</span>
           </div>
           <div className="flex items-center space-x-2 text-xs text-slate-400">
             <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
-            <span>Services Ready</span>
+            <span>{t('servicesReady')}</span>
           </div>
         </div>
 
@@ -807,15 +807,14 @@ const App = () => {
           <div className="space-y-8">
             <div className="smart-container">
               <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
-                <span className="text-white">Expert IT Solutions</span>
+                <span className="text-white">{t('heroTitle1')}</span>
                 <br />
                 <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent animate-gradient-slow">
-                  For Every Need
+                  {t('heroTitle2')}
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
-                From home networks to enterprise infrastructure, NetSyon delivers comprehensive IT consulting 
-                and cybersecurity solutions tailored to your unique requirements.
+                {t('heroDescription')}
               </p>
             </div>
             
@@ -828,7 +827,7 @@ const App = () => {
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  View Our Services
+                  {t('viewServices')}
                 </span>
               </button>
               <button
@@ -839,7 +838,7 @@ const App = () => {
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  Learn More
+                  {t('learnMore')}
                 </span>
               </button>
             </div>
@@ -851,7 +850,7 @@ const App = () => {
             <div className="w-6 h-10 border-2 border-blue-400 rounded-full p-1">
               <div className="w-1 h-3 bg-blue-400 rounded-full animate-scroll-indicator"></div>
             </div>
-            <span className="text-xs text-slate-400">Scroll to explore</span>
+            <span className="text-xs text-slate-400">{t('scrollExplore')}</span>
           </div>
         </div>
       </section>
