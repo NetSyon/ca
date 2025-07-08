@@ -569,7 +569,7 @@ const App = () => {
               <a href="#" className="hover:text-blue-400 transition-all duration-300">Support</a>
             </div>
             <div className="mt-8 pt-8 border-t border-slate-700/50 text-slate-400 text-sm">
-              © 2025 NetSys IT Consulting. All rights reserved.
+              © 2025 NetSyon IT Consulting. All rights reserved.
             </div>
           </div>
         </div>
