@@ -1033,7 +1033,6 @@ const App = () => {
                 <span className="text-slate-300 font-mono text-sm">
                   {time.toLocaleTimeString()}
                 </span>
-                <span className="text-green-400 text-xs">{t('secure')}</span>
                 <button
                   onClick={toggleLanguage}
                   className="ml-4 px-2 py-1 bg-slate-800/50 hover:bg-slate-700/50 rounded border border-slate-700/50 text-slate-300 hover:text-white transition-all duration-300 text-xs flex items-center space-x-1"
