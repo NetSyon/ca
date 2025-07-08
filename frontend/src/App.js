@@ -161,7 +161,7 @@ const App = () => {
         privacyPolicy: 'Privacy Policy',
         termsOfService: 'Terms of Service',
         footerSupport: 'Support',
-        copyright: '© 2025 NetSyon IT Consulting. All rights reserved.',
+        copyright: '© 2025 NetSyon. All rights reserved.',
       },
       fr: {
         // Navigation
