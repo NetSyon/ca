@@ -928,34 +928,34 @@ const App = () => {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-3xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors duration-300">Enterprise</h3>
+                    <h3 className="text-3xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors duration-300">{t('enterprise')}</h3>
                     <div className="flex items-center space-x-2 text-sm text-slate-400">
                       <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
-                      <span>Corporate Solutions</span>
+                      <span>{t('enterpriseStatus')}</span>
                     </div>
                   </div>
                 </div>
                 
                 <p className="text-slate-300 mb-8 text-lg leading-relaxed">
-                  Advanced cybersecurity and scalable infrastructure solutions for large organizations.
+                  {t('enterpriseDescription')}
                 </p>
                 
                 <div className="space-y-4">
                   {[
-                    { icon: '🔐', title: 'Purview Implementation', desc: 'Organization-wide deployment of Microsoft 365 and Endpoint-based Data Loss Prevention (DLP) policies to safeguard sensitive information.' },
-                    { icon: '🧩', title: 'Conditional Access (CAP) Rollout', desc: 'Design and implementation of Conditional Access Policies to enforce secure, identity-based access across all environments.' },
-                    { icon: '✉️', title: 'Microsoft Defender for Office (MDO) Deployment', desc: 'Enterprise-wide implementation of MDO to enhance email threat protection and strengthen overall security posture.' },
-                    { icon: '🏷️', title: 'Information Protection (MIP)', desc: 'Deployment of Microsoft Information Protection for data classification, labeling, and encryption across the organization.' },
-                    { icon: '📬', title: 'Email Encryption', desc: 'Design and deployment of a customized email encryption solution, ensuring secure internal and external communications.' },
-                    { icon: '🧑‍💼', title: 'Identity and Access Management (IAM)', desc: 'Architecture and rollout of PIM, Azure RBAC, Azure AD permissions, Exchange role configurations, and RBAC compliance.' },
-                    { icon: '📲', title: 'Multi-Factor Authentication (MFA)', desc: 'End-to-end deployment using software and hardware tokens (FIDO2) to strengthen identity verification.' },
-                    { icon: '☁️', title: 'Microsoft Defender for Cloud Apps (MDCA)', desc: 'Deployment of MDCA policies to monitor and secure cloud app usage, enforce file protection, and manage user sessions.' }
+                    { key: 'purviewImplementation', descKey: 'purviewImplementationDesc', icon: '🔐' },
+                    { key: 'conditionalAccess', descKey: 'conditionalAccessDesc', icon: '🧩' },
+                    { key: 'defenderOffice', descKey: 'defenderOfficeDesc', icon: '✉️' },
+                    { key: 'informationProtection', descKey: 'informationProtectionDesc', icon: '🏷️' },
+                    { key: 'emailEncryption', descKey: 'emailEncryptionDesc', icon: '📬' },
+                    { key: 'identityManagement', descKey: 'identityManagementDesc', icon: '🧑‍💼' },
+                    { key: 'multiFactor', descKey: 'multiFactorDesc', icon: '📲' },
+                    { key: 'defenderCloud', descKey: 'defenderCloudDesc', icon: '☁️' }
                   ].map((service, index) => (
                     <div key={index} className="flex items-start p-4 bg-slate-800/30 backdrop-blur-sm rounded-xl hover:bg-slate-800/50 transition-all duration-300 service-item">
                       <span className="text-xl mr-4 mt-1">{service.icon}</span>
                       <div className="flex-1">
-                        <h4 className="font-semibold text-orange-400 mb-2">{service.title}</h4>
-                        <p className="text-sm text-slate-300 leading-relaxed">{service.desc}</p>
+                        <h4 className="font-semibold text-orange-400 mb-2">{t(service.key)}</h4>
+                        <p className="text-sm text-slate-300 leading-relaxed">{t(service.descKey)}</p>
                       </div>
                     </div>
                   ))}
