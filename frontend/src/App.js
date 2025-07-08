@@ -662,8 +662,8 @@ const App = () => {
 
       case 'support':
         return {
-          title: 'Support',
-          content: (
+          title: language === 'en' ? 'Support' : 'Support',
+          content: language === 'en' ? (
             <div className="space-y-6 text-slate-300">
               <div>
                 <h3 className="text-xl font-bold text-white mb-3">Technical Support</h3>
@@ -783,6 +783,129 @@ const App = () => {
                 <p className="text-sm">
                   Ready to get help? Contact us using your preferred method above, or email us with details about your issue. 
                   Please include your contact information, a description of the problem, and any error messages you're seeing.
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-6 text-slate-300">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-3">Support Technique</h3>
+                <p className="mb-4">
+                  NetSyon fournit un support technique complet pour assurer que votre infrastructure TI fonctionne 
+                  de manière fluide et sécurisée. Notre équipe de support combine une expertise Microsoft approfondie avec un service réactif.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">📞 Canaux de Support</h4>
+                <div className="space-y-3 text-sm">
+                  <div className="bg-slate-800/30 p-3 rounded-lg">
+                    <p><strong>Support par Courriel :</strong> support@netsyon.com</p>
+                    <p className="text-slate-400">Temps de réponse : 4 heures pendant les heures d'affaires</p>
+                  </div>
+                  <div className="bg-slate-800/30 p-3 rounded-lg">
+                    <p><strong>Support Téléphonique :</strong> +1 (555) 123-4567</p>
+                    <p className="text-slate-400">Disponible : Lundi-Vendredi 8h00 - 18h00 (EST)</p>
+                  </div>
+                  <div className="bg-slate-800/30 p-3 rounded-lg">
+                    <p><strong>Ligne d'Urgence :</strong> +1 (555) 123-4567</p>
+                    <p className="text-slate-400">24/7 pour incidents de sécurité critiques</p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">🎯 Niveaux de Support</h4>
+                <div className="space-y-3 text-sm">
+                  <div className="border-l-4 border-green-400 pl-4">
+                    <p><strong>Support de Base</strong> - Inclus avec tous les services</p>
+                    <p className="text-slate-400">Support courriel, documentation, dépannage de base</p>
+                  </div>
+                  <div className="border-l-4 border-blue-400 pl-4">
+                    <p><strong>Support Premium</strong> - Pour clients de services gérés</p>
+                    <p className="text-slate-400">Support téléphonique prioritaire, surveillance proactive, réponse plus rapide</p>
+                  </div>
+                  <div className="border-l-4 border-orange-400 pl-4">
+                    <p><strong>Support Entreprise</strong> - Pour grandes organisations</p>
+                    <p className="text-slate-400">Gestionnaire de support dédié, disponibilité 24/7, garanties SLA</p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">⚡ Temps de Réponse</h4>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-slate-700">
+                        <th className="text-left py-2">Priorité</th>
+                        <th className="text-left py-2">Temps de Réponse</th>
+                        <th className="text-left py-2">Objectif de Résolution</th>
+                      </tr>
+                    </thead>
+                    <tbody className="space-y-2">
+                      <tr className="border-b border-slate-800">
+                        <td className="py-2 text-red-400">Critique</td>
+                        <td className="py-2">1 heure</td>
+                        <td className="py-2">4 heures</td>
+                      </tr>
+                      <tr className="border-b border-slate-800">
+                        <td className="py-2 text-orange-400">Élevée</td>
+                        <td className="py-2">4 heures</td>
+                        <td className="py-2">1 jour ouvrable</td>
+                      </tr>
+                      <tr className="border-b border-slate-800">
+                        <td className="py-2 text-blue-400">Moyenne</td>
+                        <td className="py-2">8 heures</td>
+                        <td className="py-2">3 jours ouvrables</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 text-green-400">Faible</td>
+                        <td className="py-2">24 heures</td>
+                        <td className="py-2">5 jours ouvrables</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">🛠️ Ressources en Libre-Service</h4>
+                <ul className="space-y-2 text-sm list-disc list-inside">
+                  <li><strong>Base de Connaissances :</strong> Documentation complète et tutoriels</li>
+                  <li><strong>Guides de Sécurité :</strong> Meilleures pratiques pour Microsoft 365 et Azure</li>
+                  <li><strong>Tutoriels Vidéo :</strong> Guides d'implémentation étape par étape</li>
+                  <li><strong>Forum Communautaire :</strong> Connectez-vous avec d'autres clients NetSyon</li>
+                  <li><strong>Webinaires Mensuels :</strong> Dernières tendances et mises à jour de sécurité</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">🔧 Capacités de Support à Distance</h4>
+                <ul className="space-y-2 text-sm list-disc list-inside">
+                  <li><strong>Accès Distant Sécurisé :</strong> Support bureau à distance chiffré</li>
+                  <li><strong>Gestion Cloud :</strong> Administration directe Azure et Microsoft 365</li>
+                  <li><strong>Surveillance Réseau :</strong> Surveillance d'infrastructure en temps réel</li>
+                  <li><strong>Correctifs Automatisés :</strong> Maintenance et mises à jour programmées</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">📊 Analytiques de Support</h4>
+                <p className="text-sm mb-2">Nous fournissons des métriques de support détaillées incluant :</p>
+                <ul className="space-y-1 text-sm list-disc list-inside">
+                  <li>Rapports de résumé de support mensuels</li>
+                  <li>Suivi des temps de réponse et de résolution</li>
+                  <li>Métriques de temps de fonctionnement et de performance système</li>
+                  <li>Rapports d'incidents de sécurité et statut de remédiation</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-blue-400 mb-2">📧 Contactez Notre Équipe de Support</h4>
+                <p className="text-sm">
+                  Prêt à obtenir de l'aide ? Contactez-nous en utilisant votre méthode préférée ci-dessus, ou envoyez-nous un courriel avec les détails de votre problème. 
+                  Veuillez inclure vos informations de contact, une description du problème et tout message d'erreur que vous voyez.
                 </p>
               </div>
             </div>
