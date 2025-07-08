@@ -1174,7 +1174,7 @@ const App = () => {
           <div className="text-center">
             <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-4">NetSyon</h3>
             <p className="text-slate-300 mb-8">
-              Professional IT consulting and cybersecurity solutions for every need
+              {t('footerDescription')}
             </p>
             <div className="flex justify-center space-x-6 mb-8">
               <a href="#" className="text-slate-400 hover:text-blue-400 transition-all duration-300 hover:scale-110">
@@ -1189,12 +1189,12 @@ const App = () => {
               </a>
             </div>
             <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-400 mb-8">
-              <button onClick={() => openModal('privacy')} className="hover:text-blue-400 transition-all duration-300">Privacy Policy</button>
-              <button onClick={() => openModal('terms')} className="hover:text-blue-400 transition-all duration-300">Terms of Service</button>
-              <button onClick={() => openModal('support')} className="hover:text-blue-400 transition-all duration-300">Support</button>
+              <button onClick={() => openModal('privacy')} className="hover:text-blue-400 transition-all duration-300">{t('privacyPolicy')}</button>
+              <button onClick={() => openModal('terms')} className="hover:text-blue-400 transition-all duration-300">{t('termsOfService')}</button>
+              <button onClick={() => openModal('support')} className="hover:text-blue-400 transition-all duration-300">{t('footerSupport')}</button>
             </div>
             <div className="mt-8 pt-8 border-t border-slate-700/50 text-slate-400 text-sm">
-              © 2025 NetSyon IT Consulting. All rights reserved.
+              {t('copyright')}
             </div>
           </div>
         </div>
