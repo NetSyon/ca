@@ -233,7 +233,7 @@ const App = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Home Users */}
             <div className="group relative bg-slate-900/30 backdrop-blur-xl rounded-3xl p-8 border border-slate-700/50 hover:border-blue-400/50 transition-all duration-700 hover:transform hover:scale-105 service-card-futuristic">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-600/0 to-cyan-600/0 group-hover:from-blue-600/10 group-hover:to-cyan-600/10 rounded-3xl transition-all duration-700"></div>
@@ -244,47 +244,29 @@ const App = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors duration-300">Home Users</h3>
-                <p className="text-slate-300 mb-6 group-hover:text-slate-200 transition-colors duration-300">
-                  Personal technology support and cybersecurity solutions for families and individuals.
+                <h3 className="text-3xl font-bold text-white mb-6 group-hover:text-blue-400 transition-colors duration-300">Home Users</h3>
+                <p className="text-slate-300 mb-8 group-hover:text-slate-200 transition-colors duration-300 text-lg">
+                  Comprehensive technology support and cybersecurity solutions for families and individuals.
                 </p>
-                <ul className="space-y-3 text-slate-300">
-                  {['Home network setup & security', 'Smart device protection', 'Data backup & recovery', 'Cyber awareness training'].map((item, index) => (
-                    <li key={index} className="flex items-start group-hover:text-slate-200 transition-colors duration-300">
-                      <svg className="w-5 h-5 text-blue-400 mt-0.5 mr-3 flex-shrink-0 animate-pulse-gentle" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                      <span className="animate-fade-in-left" style={{ animationDelay: `${index * 0.1}s` }}>{item}</span>
-                    </li>
+                <div className="space-y-6 text-slate-300">
+                  {[
+                    { icon: '📡', title: 'Home Network Security', desc: 'Wi-Fi setup, firewall hardening, parental controls & guest isolation' },
+                    { icon: '💻', title: 'Device Protection', desc: 'Antivirus, IoT monitoring & secure setup of smart devices (TVs, cams, etc.)' },
+                    { icon: '🧠', title: 'Cyber Awareness', desc: 'Family-focused training on phishing, passwords & online safety' },
+                    { icon: '🔐', title: 'Data Privacy & Backup', desc: 'Cloud backup config, encryption, GDPR-friendly storage (NAS)' },
+                    { icon: '👥', title: 'User Access Control', desc: 'MFA setup, account recovery & password management' },
+                    { icon: '🌍', title: 'Remote Access & VPN', desc: 'Secure browsing & remote desktop setup for travel/work' },
+                    { icon: '⚙️', title: 'Tech Optimization', desc: 'Smart home troubleshooting, network tuning, and device upgrades' }
+                  ].map((service, index) => (
+                    <div key={index} className="flex items-start group-hover:text-slate-200 transition-colors duration-300 p-4 bg-slate-800/20 rounded-xl hover:bg-slate-800/40 transition-all duration-300">
+                      <span className="text-2xl mr-4 mt-1 animate-pulse-gentle">{service.icon}</span>
+                      <div>
+                        <h4 className="font-semibold text-blue-400 mb-2">{service.title}</h4>
+                        <p className="text-sm leading-relaxed">{service.desc}</p>
+                      </div>
+                    </div>
                   ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* Small & Medium Business */}
-            <div className="group relative bg-slate-900/30 backdrop-blur-xl rounded-3xl p-8 border border-slate-700/50 hover:border-blue-400/50 transition-all duration-700 hover:transform hover:scale-105 service-card-futuristic">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/0 to-cyan-600/0 group-hover:from-blue-600/10 group-hover:to-cyan-600/10 rounded-3xl transition-all duration-700"></div>
-              <div className="absolute inset-0 bg-holographic opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-700"></div>
-              <div className="relative z-10">
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 shadow-glow-blue group-hover:shadow-glow-blue-intense transition-all duration-300 animate-float" style={{animationDelay: '0.5s'}}>
-                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors duration-300">Small & Medium Business</h3>
-                <p className="text-slate-300 mb-6 group-hover:text-slate-200 transition-colors duration-300">
-                  Scalable IT infrastructure and managed services to grow your business efficiently.
-                </p>
-                <ul className="space-y-3 text-slate-300">
-                  {['Managed IT services', 'Business continuity planning', 'Network security solutions', '24/7 technical support'].map((item, index) => (
-                    <li key={index} className="flex items-start group-hover:text-slate-200 transition-colors duration-300">
-                      <svg className="w-5 h-5 text-blue-400 mt-0.5 mr-3 flex-shrink-0 animate-pulse-gentle" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                      <span className="animate-fade-in-left" style={{ animationDelay: `${index * 0.1}s` }}>{item}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
 
@@ -293,25 +275,35 @@ const App = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-blue-600/0 to-cyan-600/0 group-hover:from-blue-600/10 group-hover:to-cyan-600/10 rounded-3xl transition-all duration-700"></div>
               <div className="absolute inset-0 bg-holographic opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-700"></div>
               <div className="relative z-10">
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 shadow-glow-blue group-hover:shadow-glow-blue-intense transition-all duration-300 animate-float" style={{animationDelay: '1s'}}>
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 shadow-glow-blue group-hover:shadow-glow-blue-intense transition-all duration-300 animate-float" style={{animationDelay: '0.5s'}}>
                   <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors duration-300">Enterprise</h3>
-                <p className="text-slate-300 mb-6 group-hover:text-slate-200 transition-colors duration-300">
+                <h3 className="text-3xl font-bold text-white mb-6 group-hover:text-blue-400 transition-colors duration-300">Enterprise</h3>
+                <p className="text-slate-300 mb-8 group-hover:text-slate-200 transition-colors duration-300 text-lg">
                   Advanced cybersecurity and scalable infrastructure solutions for large organizations.
                 </p>
-                <ul className="space-y-3 text-slate-300">
-                  {['Enterprise security architecture', 'Compliance & risk management', 'Cloud infrastructure design', 'Strategic IT consulting'].map((item, index) => (
-                    <li key={index} className="flex items-start group-hover:text-slate-200 transition-colors duration-300">
-                      <svg className="w-5 h-5 text-blue-400 mt-0.5 mr-3 flex-shrink-0 animate-pulse-gentle" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                      <span className="animate-fade-in-left" style={{ animationDelay: `${index * 0.1}s` }}>{item}</span>
-                    </li>
+                <div className="space-y-6 text-slate-300">
+                  {[
+                    { icon: '🔐', title: 'Purview Implementation', desc: 'Organization-wide deployment of Microsoft 365 and Endpoint-based Data Loss Prevention (DLP) policies to safeguard sensitive information.' },
+                    { icon: '🧩', title: 'Conditional Access (CAP) Rollout', desc: 'Design and implementation of Conditional Access Policies to enforce secure, identity-based access across all environments.' },
+                    { icon: '✉️', title: 'Microsoft Defender for Office (MDO) Deployment', desc: 'Enterprise-wide implementation of MDO to enhance email threat protection and strengthen overall security posture.' },
+                    { icon: '🏷️', title: 'Information Protection (MIP)', desc: 'Deployment of Microsoft Information Protection for data classification, labeling, and encryption across the organization.' },
+                    { icon: '📬', title: 'Email Encryption', desc: 'Design and deployment of a customized email encryption solution, ensuring secure internal and external communications.' },
+                    { icon: '🧑‍💼', title: 'Identity and Access Management (IAM)', desc: 'Architecture and rollout of PIM, Azure RBAC, Azure AD permissions, Exchange role configurations, and RBAC compliance.' },
+                    { icon: '📲', title: 'Multi-Factor Authentication (MFA)', desc: 'End-to-end deployment using software and hardware tokens (FIDO2) to strengthen identity verification.' },
+                    { icon: '☁️', title: 'Microsoft Defender for Cloud Apps (MDCA)', desc: 'Deployment of MDCA policies to monitor and secure cloud app usage, enforce file protection, and manage user sessions.' }
+                  ].map((service, index) => (
+                    <div key={index} className="flex items-start group-hover:text-slate-200 transition-colors duration-300 p-4 bg-slate-800/20 rounded-xl hover:bg-slate-800/40 transition-all duration-300">
+                      <span className="text-2xl mr-4 mt-1 animate-pulse-gentle">{service.icon}</span>
+                      <div>
+                        <h4 className="font-semibold text-blue-400 mb-2">{service.title}</h4>
+                        <p className="text-sm leading-relaxed">{service.desc}</p>
+                      </div>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             </div>
           </div>
