@@ -857,17 +857,6 @@ const App = () => {
               </div>
 
               <div>
-                <h4 className="text-lg font-semibold text-blue-400 mb-2">🛠️ Ressources en Libre-Service</h4>
-                <ul className="space-y-2 text-sm list-disc list-inside">
-                  <li><strong>Base de Connaissances :</strong> Documentation complète et tutoriels</li>
-                  <li><strong>Guides de Sécurité :</strong> Meilleures pratiques pour Microsoft 365 et Azure</li>
-                  <li><strong>Tutoriels Vidéo :</strong> Guides d'implémentation étape par étape</li>
-                  <li><strong>Forum Communautaire :</strong> Connectez-vous avec d'autres clients NetSyon</li>
-                  <li><strong>Webinaires Mensuels :</strong> Dernières tendances et mises à jour de sécurité</li>
-                </ul>
-              </div>
-
-              <div>
                 <h4 className="text-lg font-semibold text-blue-400 mb-2">🔧 Capacités de Support à Distance</h4>
                 <ul className="space-y-2 text-sm list-disc list-inside">
                   <li><strong>Accès Distant Sécurisé :</strong> Support bureau à distance chiffré</li>
