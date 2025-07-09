@@ -74,8 +74,8 @@ const App = () => {
         viewServices: 'View Our Services',
         learnMore: 'Learn More',
         scrollExplore: 'Scroll to explore',
-        systemOnline: 'System Online',
-        servicesReady: 'Services Ready',
+        systemOnline: 'Trust',
+        servicesReady: 'Secure',
         
         // Services Section
         servicesTitle: 'Our Services',
