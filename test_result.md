@@ -152,15 +152,18 @@ frontend:
         comment: "Verified removal of Self-Service Resources section from support modal. English version shows 0 instances of Self-Service Resources, Knowledge Base, and Security Guides. French version shows 0 instances of Ressources en Libre-Service, Base de Connaissances, and Guides de Sécurité. Other sections remain intact."
   - task: "Sync user's manual changes to app.js translations"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/frontend/src/App.js"
     stuck_count: 0
     priority: "medium"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Applied user's translation changes: systemOnline changed from 'System Online' to 'Trust' (EN) and 'Système En Ligne' to 'Confiance' (FR). servicesReady changed from 'Services Ready' to 'Secure' (EN) and 'Services Prêts' to 'Sécurité' (FR). Preserved previous removals of Security Active indicator and Self-Service Resources section."
+      - working: true
+        agent: "main"
+        comment: "Verified sync completed successfully. Status indicators now show 'Trust' and 'Secure' in English, 'Confiance' and 'Sécurité' in French. Self-Service Resources section remains removed from support modal. Security Active indicator remains removed from hero section."
 
 metadata:
   created_by: "main_agent"
