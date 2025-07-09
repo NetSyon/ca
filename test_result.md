@@ -169,3 +169,5 @@ agent_communication:
     message: "Found Security Active text in hero section status indicators at line 1087. Also found translation keys at lines 78 and 182. Will remove the entire status indicator div and its corresponding translation keys."
   - agent: "testing"
     message: "Tested the backend API endpoints after the frontend changes. All backend API endpoints are working correctly. The root endpoint, create status check, and get status checks endpoints all return the expected responses with 200 status codes."
+  - agent: "main"
+    message: "Removed Self-Service Resources section from support modal in both English and French versions. Verified through testing that the content is no longer present in the modal while other sections remain intact."
