@@ -1257,7 +1257,7 @@ const App = () => {
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {[
-                  { value: '12+', labelKey: 'yearsExperience', color: 'blue' },
+                  { value: '15+', labelKey: 'yearsExperience', color: 'blue' },
                   { value: '500+', labelKey: 'projectsCompleted', color: 'cyan' },
                   { value: '24/7', labelKey: 'supportAvailable', color: 'green' },
                   { value: '100%', labelKey: 'clientSatisfaction', color: 'orange' }
