@@ -1112,14 +1112,6 @@ const App = () => {
           </div>
         </div>
         
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-gentle">
-          <div className="flex flex-col items-center space-y-2">
-            <div className="w-6 h-10 border-2 border-blue-400 rounded-full p-1">
-              <div className="w-1 h-3 bg-blue-400 rounded-full animate-scroll-indicator"></div>
-            </div>
-            <span className="text-xs text-slate-400">{t('scrollExplore')}</span>
-          </div>
-        </div>
       </section>
 
       {/* Services Section */}
