@@ -153,7 +153,7 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Remove Security Active text from hero section status indicators"
+    - "Remove Self-Service Resources section from support page"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
