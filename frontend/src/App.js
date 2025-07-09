@@ -75,6 +75,7 @@ const App = () => {
         learnMore: 'Learn More',
         scrollExplore: 'Scroll to explore',
         systemOnline: 'Trust',
+        securityActive: 'Protect',
         servicesReady: 'Secure',
         
         // Services Section
