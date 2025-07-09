@@ -177,8 +177,8 @@ const App = () => {
         viewServices: 'Voir Nos Services',
         learnMore: 'En Savoir Plus',
         scrollExplore: 'Défiler pour explorer',
-        systemOnline: 'Système En Ligne',
-        servicesReady: 'Services Prêts',
+        systemOnline: 'Confiance',
+        servicesReady: 'Sécurité',
         
         // Services Section
         servicesTitle: 'Nos Services',
