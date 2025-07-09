@@ -134,7 +134,7 @@ frontend:
         agent: "testing"
         comment: "Verified that the backend API endpoints are working correctly after the frontend changes. All three endpoints (root, create status check, get status checks) return 200 status codes with the expected responses. The removal of the Security Active text from the frontend did not impact the backend functionality."
   - task: "Remove Self-Service Resources section from support page"
-    implemented: false
+    implemented: true
     working: "NA"
     file: "/app/frontend/src/App.js"
     stuck_count: 0
@@ -144,6 +144,9 @@ frontend:
       - working: "NA"
         agent: "main"
         comment: "Located Self-Service Resources section in support modal content around lines 748 and 871. Need to remove this section from both English and French versions."
+      - working: "NA"
+        agent: "main"
+        comment: "Removed Self-Service Resources section from both English and French versions of the support modal. Removed the entire div containing the Knowledge Base, Security Guides, Video Tutorials, Community Forum, and Monthly Webinars content."
 
 metadata:
   created_by: "main_agent"
