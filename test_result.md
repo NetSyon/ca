@@ -113,7 +113,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "Remove Security Active from fr and en versions. Remove Self-Service Resources section from support page in both English and French versions"
+user_problem_statement: "Remove Security Active from fr and en versions. Remove Self-Service Resources section from support page in both English and French versions. Sync manual changes from user's updated app.js file."
 
 frontend:
   - task: "Remove Security Active text from hero section status indicators"
