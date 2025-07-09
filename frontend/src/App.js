@@ -745,17 +745,6 @@ const App = () => {
               </div>
 
               <div>
-                <h4 className="text-lg font-semibold text-blue-400 mb-2">🛠️ Self-Service Resources</h4>
-                <ul className="space-y-2 text-sm list-disc list-inside">
-                  <li><strong>Knowledge Base:</strong> Comprehensive documentation and tutorials</li>
-                  <li><strong>Security Guides:</strong> Best practices for Microsoft 365 and Azure</li>
-                  <li><strong>Video Tutorials:</strong> Step-by-step implementation guides</li>
-                  <li><strong>Community Forum:</strong> Connect with other NetSyon clients</li>
-                  <li><strong>Monthly Webinars:</strong> Latest security trends and updates</li>
-                </ul>
-              </div>
-
-              <div>
                 <h4 className="text-lg font-semibold text-blue-400 mb-2">🔧 Remote Support Capabilities</h4>
                 <ul className="space-y-2 text-sm list-disc list-inside">
                   <li><strong>Secure Remote Access:</strong> Encrypted remote desktop support</li>
